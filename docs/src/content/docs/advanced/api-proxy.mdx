@@ -52,24 +52,24 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 7. 粘贴以下代码：
 
-```javascript
-export default {
-  async fetch(request) {
-    const url = new URL(request.url);
-    
-    // 将请求转发到 GitHub API
-    const githubUrl = `https://api.github.com${url.pathname}${url.search}`;
-    
-    const githubRequest = new Request(githubUrl, {
-      method: request.method,
-      headers: request.headers,
-      body: request.body,
-    });
-    
-    return await fetch(githubRequest);
-  }
-}
-```
+    ```javascript
+    export default {
+      async fetch(request) {
+        const url = new URL(request.url);
+        
+        // 将请求转发到 GitHub API
+        const githubUrl = `https://api.github.com${url.pathname}${url.search}`;
+        
+        const githubRequest = new Request(githubUrl, {
+          method: request.method,
+          headers: request.headers,
+          body: request.body,
+        });
+        
+        return await fetch(githubRequest);
+      }
+    }
+    ```
 
 8. 点击 **Save and Deploy**
 

@@ -17,9 +17,9 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 3. **重要**：取消勾选 "Copy `main` branch only"
    
-   :::caution[不要只复制 main 分支]
-   Moire 使用其他分支存储 Demo 数据，如果只复制 main 分支，初始网站将是空白的。
-   :::
+    :::caution[不要只复制 main 分支]
+    Moire 使用其他分支存储 Demo 数据，如果只复制 main 分支，初始网站将是空白的。
+    :::
 
 4. 点击 **Create fork**
 
@@ -72,24 +72,24 @@ Fork 的仓库默认**禁用** GitHub Actions，必须手动开启，否则网�
 2. 点击 **Generate new token**
 
 3. 填写 Token 信息：
-   - **Token name**: `Moire Sync` (或任意名称)
-   - **Expiration**: 建议选择 90 天或更长
-   - **Repository access**: 选择 **Only select repositories**，然后选择你 Fork 的 Moire 仓库
+    - **Token name**: `Moire Sync` (或任意名称)
+    - **Expiration**: 建议选择 90 天或更长
+    - **Repository access**: 选择 **Only select repositories**，然后选择你 Fork 的 Moire 仓库
 
 4. 在 **Permissions** 下配置权限：
 
-   | 权限 | 级别 | 说明 |
-   |------|------|------|
-   | **Contents** | Read and write | 上传笔记文件 |
-   | **Workflows** | Read and write | 触发构建流程 |
+    | 权限 | 级别 | 说明 |
+    |------|------|------|
+    | **Contents** | Read and write | 上传笔记文件 |
+    | **Workflows** | Read and write | 触发构建流程 |
 
 5. 点击 **Generate token**
 
 6. **复制并保存** 生成的 Token
 
-   :::caution[Token 只显示一次]
-   Token 生成后只会显示一次，请立即复制保存。如果丢失，需要重新生成。
-   :::
+    :::caution[Token 只显示一次]
+    Token 生成后只会显示一次，请立即复制保存。如果丢失，需要重新生成。
+    :::
 
 </Steps>
 
