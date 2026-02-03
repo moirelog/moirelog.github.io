@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/shortcuts/latest/config",
+      "destination": "https://www.icloud.com/shortcuts/PLACEHOLDER_CONFIG_ID",
+      "permanent": false
+    },
+    {
+      "source": "/shortcuts/latest/sync",
+      "destination": "https://www.icloud.com/shortcuts/PLACEHOLDER_SYNC_ID",
+      "permanent": false
+    }
+  ]
+}

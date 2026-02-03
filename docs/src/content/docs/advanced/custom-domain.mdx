@@ -1,0 +1,194 @@
+---
+title: 自定义域名
+description: 为你的 Moire 博客绑定自定义域名
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+默认情况下，你的网站地址是 `username.github.io/moire`，通过绑定自定义域名，可以使用 `blog.yourname.com` 这样的个性化地址。
+
+## 前置要求
+
+- 拥有一个域名（可从 Namecheap、Cloudflare、阿里云等购买）
+- 能够访问域名的 DNS 设置
+
+## 两种部署方式
+
+Moire 支持两种部署平台，绑定域名的方式略有不同。
+
+<Tabs>
+  <TabItem label="GitHub Pages">
+    ## 在 GitHub Pages 绑定域名
+
+    <Steps>
+
+    1. 进入你 Fork 的仓库
+
+    2. 点击 **Settings** → **Pages**
+
+    3. 在 **Custom domain** 下输入你的域名：
+       ```
+       blog.yourname.com
+       ```
+
+    4. 点击 **Save**
+
+    5. 等待 DNS 检查完成（可能需要几分钟）
+
+    6. 勾选 **Enforce HTTPS**（强烈推荐）
+
+    </Steps>
+
+    ### 配置 DNS
+
+    在你的域名提供商处添加 DNS 记录：
+
+    **使用子域名（推荐）**：
+
+    | 类型 | 名称 | 值 |
+    |------|------|------|
+    | CNAME | blog | `username.github.io` |
+
+    **使用根域名**：
+
+    | 类型 | 名称 | 值 |
+    |------|------|------|
+    | A | @ | `185.199.108.153` |
+    | A | @ | `185.199.109.153` |
+    | A | @ | `185.199.110.153` |
+    | A | @ | `185.199.111.153` |
+
+    :::tip[推荐使用子域名]
+    使用 `blog.yourname.com` 而不是 `yourname.com`，配置更简单，且不会影响主域名的使用。
+    :::
+  </TabItem>
+  
+  <TabItem label="Vercel">
+    ## 在 Vercel 绑定域名
+
+    <Steps>
+
+    1. 登录 [Vercel Dashboard](https://vercel.com/dashboard)
+
+    2. 选择你的 Moire 项目
+
+    3. 点击 **Settings** → **Domains**
+
+    4. 输入你的域名：
+       ```
+       blog.yourname.com
+       ```
+
+    5. 点击 **Add**
+
+    6. Vercel 会提示你需要添加的 DNS 记录
+
+    </Steps>
+
+    ### 配置 DNS
+
+    根据 Vercel 的提示，通常是添加一条 CNAME 记录：
+
+    | 类型 | 名称 | 值 |
+    |------|------|------|
+    | CNAME | blog | `cname.vercel-dns.com` |
+
+    :::note[自动 HTTPS]
+    Vercel 会自动为你的域名申请 SSL 证书，无需额外配置。
+    :::
+  </TabItem>
+</Tabs>
+
+## DNS 传播时间
+
+DNS 记录生效通常需要：
+
+| 时间范围 | 说明 |
+|----------|------|
+| 5-10 分钟 | 快速 DNS 提供商（如 Cloudflare） |
+| 1-4 小时 | 大多数提供商 |
+| 24-48 小时 | 最坏情况 |
+
+:::tip[检查 DNS]
+使用 [DNS Checker](https://dnschecker.org/) 查看你的 DNS 记录是否已全球生效。
+:::
+
+## 更新配置文件
+
+绑定域名后，需要更新 `moire.config.ts` 中的 `baseUrl`：
+
+```typescript
+export default {
+  title: "My Blog",
+  baseUrl: "https://blog.yourname.com", // 添加这行
+  // ... 其他配置
+}
+```
+
+提交这个更改到 GitHub，等待构建完成。
+
+## 故障排查
+
+### DNS 已生效但无法访问？
+
+- 检查 GitHub Pages / Vercel 的状态
+- 确保 DNS 记录类型和值完全正确
+- 清除浏览器缓存
+
+### SSL 证书错误？
+
+- GitHub Pages: 确保勾选了 "Enforce HTTPS"，等待证书自动签发（最多 24 小时）
+- Vercel: 自动处理，如果失败联系 Vercel 支持
+
+### 显示 404？
+
+- 确保更新了 `baseUrl` 配置
+- 检查 GitHub Actions 是否构建成功
+- 尝试访问 `/index.html` 确认文件是否存在
+
+## 最佳实践
+
+### 使用 Cloudflare
+
+将域名托管在 Cloudflare 可以获得：
+
+- ⚡ CDN 加速
+- 🛡️ DDoS 防护
+- 🔒 免费 SSL
+- 📊 流量分析
+
+设置步骤：
+1. 在 Cloudflare 添加你的域名
+2. 更新域名注册商的 Nameserver 到 Cloudflare
+3. 在 Cloudflare 添加 DNS 记录
+4. 启用 **Proxied**（橙色云朵图标）
+
+### 301 重定向
+
+如果你想将旧地址重定向到新域名：
+
+在 Vercel 的 `vercel.json` 中添加：
+
+```json
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://blog.yourname.com/:path*",
+      "permanent": true
+    }
+  ]
+}
+```
+
+## 下一步
+
+遇到问题？查看故障排除指南。
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="故障排除"
+  description="常见问题和解决方案"
+  href="/troubleshooting/"
+/>

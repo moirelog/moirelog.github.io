@@ -1,0 +1,206 @@
+---
+title: 故障排除
+description: 常见问题和解决方案
+---
+
+遇到问题了？这里是最常见问题的解决方案。
+
+
+## 同步问题
+
+### Q: 快捷指令报错 "401 Bad Credentials"
+
+**原因**：GitHub Token 无效或权限不足。
+
+**解决方案**：
+
+1. 检查 Token 是否正确复制（不要有多余空格）
+2. 确认 Token 权限包含：
+   - Contents: Read and write
+   - Workflows: Read and write
+3. 检查 Token 是否过期，如果过期需重新生成
+4. 重新运行 **Moire Config**，仔细粘贴新 Token
+
+---
+
+### Q: 笔记没有出现在网站上
+
+**可能原因**：
+
+| 原因 | 检查方法 | 解决方案 |
+|------|----------|----------|
+| 同步未运行 | 查看快捷指令是否执行 | 手动运行 Moire Sync |
+| GitHub Actions 失败 | 查看 Actions 日志 | 修复构建错误 |
+| 笔记不在正确文件夹 | 确认在 "Moire" 文件夹 | 移动笔记到正确位置 |
+| 等待时间不够 | - | 等待 2-3 分钟 |
+
+**检查步骤**：
+
+1. 进入 GitHub 仓库
+2. 点击 **Actions** 标签
+3. 查看最新的工作流运行状态
+4. 如果显示 ❌，点击查看详细日志
+
+---
+
+### Q: 快捷指令报错 "Cannot parse response"
+
+**原因**：API 地址错误或网络不通。
+
+**解决方案**：
+
+1. 检查 Moire Config 中的 API Base URL 是否正确：
+   - 默认应该是 `https://api.github.com`
+   - 如果使用代理，确保 Workers URL 正确
+2. 测试网络连接：在浏览器访问 `https://api.github.com`
+3. 如果在国内，参考 [API 加速](/advanced/api-proxy/) 配置代理
+
+---
+
+### Q: 图片没有上传
+
+**可能原因**：
+
+- 图片太大（超过 1MB）
+- 图片格式不支持
+- 网络超时
+
+**解决方案**：
+
+1. 压缩图片（推荐工具：TinyPNG、ImageOptim）
+2. 使用 PNG 或 JPG 格式
+3. 确保网络稳定
+4. 重试同步
+
+---
+
+## 配置问题
+
+### Q: 修改了 moire.config.ts 但没生效
+
+**可能原因**：
+
+- 修改未提交到 GitHub
+- GitHub Actions 未运行
+- 浏览器缓存
+
+**解决方案**：
+
+1. 确认修改已 commit 并 push 到 GitHub
+2. 手动触发 Actions（或等待自动触发）
+3. 强制刷新浏览器（Cmd/Ctrl + Shift + R）
+
+---
+
+### Q: Fork 后仓库是空的
+
+**原因**：勾选了 "Copy main branch only"。
+
+**解决方案**：
+
+1. 删除当前 Fork
+2. 重新 Fork，取消勾选 "Copy main branch only"
+3. 或者：手动创建第一篇笔记，同步后就有内容了
+
+---
+
+## 部署问题
+
+### Q: GitHub Actions 一直失败
+
+**常见错误和解决方案**：
+
+| 错误信息 | 原因 | 解决方案 |
+|----------|------|----------|
+| `Permission denied` | Actions 未开启 | Settings → Actions → Allow all |
+| `Pages build failed` | Pages 配置错误 | Settings → Pages → Source 选 "GitHub Actions" |
+| `Resource not accessible` | Token 权限不足 | 重新生成 Token 并检查权限 |
+
+---
+
+### Q: 网站显示 404
+
+**可能原因**：
+
+- Pages 未部署
+- 域名配置错误
+- 路径配置错误
+
+**解决方案**：
+
+1. 确认 Pages 已启用（Settings → Pages）
+2. 检查访问的 URL 是否正确：
+   ```
+   https://username.github.io/reponame/
+   ```
+3. 如果使用自定义域名，检查 DNS 配置
+
+---
+
+## 快捷指令问题
+
+### Q: 自动化不工作
+
+**iOS/iPadOS**：
+
+- 确认自动化已启用（快捷指令 → 自动化 → 检查开关）
+- 确认关闭了 "运行前询问"
+- 尝试删除自动化重新创建
+
+**macOS**：
+
+- 使用快捷键方案（更可靠）
+- 或安装 Shortery App
+
+---
+
+### Q: 快捷指令下载链接失效
+
+**原因**：iCloud 分享链接过期。
+
+**解决方案**：
+
+- 查看[版本日志](/changelog/)获取最新链接
+- 或访问 [GitHub Releases](https://github.com/moirelog/moire/releases) 下载
+
+---
+
+## 配置检查清单
+
+如果遇到问题，按顺序检查：
+
+- [ ] GitHub Token 正确且有效
+- [ ] Token 权限包含 Contents 和 Workflows 的读写
+- [ ] Actions 已开启（Settings → Actions → Allow all）
+- [ ] Pages 设置为 "GitHub Actions"
+- [ ] Moire Config 填写正确（User, Repo, Token）
+- [ ] 笔记在 iCloud 的 "Moire" 文件夹
+- [ ] 快捷指令自动化已启用
+
+## 仍然无法解决？
+
+### 获取帮助
+
+1. **GitHub Issues**: [moirelog/moire/issues](https://github.com/moirelog/moire/issues)
+   - 搜索是否有类似问题
+   - 创建新 Issue 描述你的问题
+
+2. **提供信息**：
+   - 你的操作系统版本（iOS/macOS）
+   - 快捷指令版本
+   - 错误截图
+   - GitHub Actions 日志（如果相关）
+
+3. **社区讨论**: [GitHub Discussions](https://github.com/moirelog/moire/discussions)
+
+## 下一步
+
+查看版本更新和新功能。
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="版本日志"
+  description="查看 Moire 的更新历史"
+  href="/changelog/"
+/>

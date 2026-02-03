@@ -1,0 +1,159 @@
+---
+title: 站点配置
+description: 修改网站标题、作者、描述等基本信息
+---
+
+通过修改 `moire.config.ts` 文件，你可以自定义网站的基本信息。
+
+## 配置文件位置
+
+```
+your-repo/
+└── moire.config.ts  ← 在这里
+```
+
+## 配置参数详解
+
+打开 `moire.config.ts`，你会看到类似这样的配置：
+
+```typescript
+export default {
+  // 网站标题
+  title: "My Moire Blog",
+  
+  // 作者名称
+  author: "John Doe",
+  
+  // 网站描述（用于 SEO）
+  description: "My personal blog powered by Moire",
+  
+  // 每页显示的文章数量
+  pageSize: 10,
+  
+  // 主题选择
+  theme: "receipt",
+  
+  // 头像 URL（可选）
+  avatar: "https://avatars.githubusercontent.com/u/YOUR_ID",
+  
+  // 社交链接（可选）
+  social: {
+    github: "https://github.com/yourusername",
+    twitter: "https://twitter.com/yourusername",
+  },
+}
+```
+
+## 参数说明
+
+### title
+
+**类型**：`string`  
+**默认值**：`"Moire Blog"`
+
+网站的标题，会显示在：
+- 浏览器标签页
+- 页面顶部导航栏
+- SEO meta 标签
+
+### author
+
+**类型**：`string`  
+**默认值**：`"Anonymous"`
+
+作者名称，用于：
+- 文章署名
+- RSS feed
+- SEO meta 标签
+
+### description
+
+**类型**：`string`  
+**默认值**：`"A blog powered by Moire"`
+
+网站描述，主要用于 SEO，会出现在：
+- Google 搜索结果下方
+- 社交媒体卡片
+- RSS feed 描述
+
+### pageSize
+
+**类型**：`number`  
+**默认值**：`10`
+
+首页每页显示的文章数量。
+
+- 建议 5-20 之间
+- 太少需要频繁翻页
+- 太多加载慢
+
+### theme
+
+**类型**：`string`  
+**可选值**：`"receipt"` | `"cyberpunk"` | `"academic"` | `"pixel"`
+
+主题风格，详见[主题风格](/customization/themes/)章节。
+
+### avatar
+
+**类型**：`string`（可选）  
+**格式**：图片 URL
+
+作者头像链接。推荐使用：
+- GitHub 头像：`https://avatars.githubusercontent.com/u/YOUR_USER_ID`
+- Gravatar：`https://www.gravatar.com/avatar/YOUR_HASH`
+
+### social
+
+**类型**：`object`（可选）
+
+社交媒体链接，会在页面某处显示图标链接。
+
+支持的平台：
+- `github`
+- `twitter`
+- `mastodon`
+- `email`
+
+## 示例配置
+
+一个完整的配置示例：
+
+```typescript
+export default {
+  title: "莫尔的笔记本",
+  author: "张三",
+  description: "记录技术、生活与思考",
+  pageSize: 8,
+  theme: "academic",
+  avatar: "https://avatars.githubusercontent.com/u/123456",
+  social: {
+    github: "https://github.com/zhangsan",
+    email: "zhangsan@example.com",
+  },
+}
+```
+
+## 应用更改
+
+修改配置后：
+
+1. **提交到 GitHub**（通过 Git 或 GitHub 网页编辑）
+2. GitHub Actions 会自动构建
+3. 等待 1-2 分钟，刷新网站即可看到更改
+
+:::tip[本地预览]
+如果你克隆了仓库到本地，可以运行 `npm run dev` 即时预览配置更改。
+:::
+
+## 下一步
+
+配置好站点信息后，让我们看看如何切换主题。
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="主题风格"
+  description="选择并切换你喜欢的主题"
+  href="/customization/themes/"
+/>

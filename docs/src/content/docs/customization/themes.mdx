@@ -1,0 +1,126 @@
+---
+title: 主题风格
+description: 了解并选择 Moire 提供的多种主题
+---
+
+Moire 提供多套精心设计的主题，每个主题都有独特的视觉风格和氛围。
+
+## 可用主题
+
+### Receipt（票据风）
+
+**特点**：
+- 🧾 模拟纸质票据的质感
+- 📝 单色黑白设计
+- 🖨️ 打印机字体风格
+
+**适合**：极简主义、复古爱好者
+
+**预览**：
+```typescript
+theme: "receipt"
+```
+
+---
+
+### Cyberpunk（赛博朋克）
+
+**特点**：
+- 🌃 霓虹色彩
+- 💻 黑客终端风格
+- ⚡ 动态扫描线效果
+
+**适合**：科技爱好者、极客
+
+**预览**：
+```typescript
+theme: "cyberpunk"
+```
+
+---
+
+### Academic（学术风）
+
+**特点**：
+- 📚 论文排版风格
+- 🎓 衬线字体
+- 📄 正式的笔记本样式
+
+**适合**：研究者、学术写作
+
+**预览**：
+```typescript
+theme: "academic"
+```
+
+---
+
+### Pixel（像素游戏风）
+
+**特点**：
+- 🎮 8-bit 像素艺术
+- 🕹️ 复古游戏界面
+- 🎨 明快色彩
+
+**适合**：游戏爱好者、怀旧玩家
+
+**预览**：
+```typescript
+theme: "pixel"
+```
+
+## 如何切换主题
+
+在 `moire.config.ts` 中修改 `theme` 字段：
+
+```typescript
+export default {
+  title: "My Blog",
+  theme: "cyberpunk", // 改成你想要的主题
+  // ... 其他配置
+}
+```
+
+提交到 GitHub，等待构建完成即可。
+
+## 主题对比
+
+| 主题 | 色调 | 风格 | 复杂度 |
+|------|------|------|--------|
+| Receipt | 黑白 | 极简 | ⭐ |
+| Cyberpunk | 霓虹 | 科技 | ⭐⭐⭐ |
+| Academic | 中性 | 正式 | ⭐⭐ |
+| Pixel | 彩色 | 复古 | ⭐⭐⭐ |
+
+## 自定义主题（进阶）
+
+如果你懂前端开发，可以创建自己的主题！
+
+主题文件位于：`src/themes/your-theme/`
+
+你需要：
+1. 创建 `index.svelte` 组件
+2. 定义 CSS 样式
+3. 在配置中引用
+
+详细教程请参考 [开发者文档](https://github.com/moirelog/moire/wiki)。
+
+## 主题路线图
+
+即将推出的主题：
+
+- 🌸 **Bento** - 日式便当格子风
+- 🌙 **Midnight** - 深色极简风
+- ✍️ **Handwriting** - 手写笔记风
+
+## 下一步
+
+了解 Markdown 和图片上传的支持情况。
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Markdown 支持"
+  description="查看支持的 Markdown 语法"
+  href="/usage/markdown/"
+/>

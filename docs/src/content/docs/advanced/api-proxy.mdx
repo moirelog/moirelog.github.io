@@ -1,0 +1,177 @@
+---
+title: API 加速
+description: 为中国大陆用户配置 GitHub API 代理
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+如果你在中国大陆，访问 GitHub API 可能会遇到速度慢或连接失败的问题。本章介绍如何使用 Cloudflare Workers 搭建代理。
+
+## 为什么需要代理？
+
+快捷指令需要调用 GitHub API 来上传笔记，但在某些网络环境下：
+
+- ⚠️ 请求超时
+- 🐌 速度极慢
+- ❌ 连接失败
+
+通过 Cloudflare Workers 代理，可以大幅提升速度和稳定性。
+
+## 部署 Cloudflare Workers
+
+### 前置要求
+
+- Cloudflare 账号（免费）
+- 域名（可选，Cloudflare 提供免费子域名）
+
+### 快速部署
+
+我们提供了一键部署按钮：
+
+<LinkButton href="https://deploy.workers.cloudflare.com/?url=https://github.com/moirelog/github-api-proxy" variant="primary" icon="rocket">
+  一键部署到 Cloudflare Workers
+</LinkButton>
+
+### 手动部署
+
+如果一键部署不可用，可以手动部署：
+
+<Steps>
+
+1. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+2. 进入 **Workers & Pages**
+
+3. 点击 **Create application** → **Create Worker**
+
+4. 给 Worker 命名（如 `github-api-proxy`）
+
+5. 点击 **Deploy**
+
+6. 部署后，点击 **Edit code**
+
+7. 粘贴以下代码：
+
+```javascript
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    
+    // 将请求转发到 GitHub API
+    const githubUrl = `https://api.github.com${url.pathname}${url.search}`;
+    
+    const githubRequest = new Request(githubUrl, {
+      method: request.method,
+      headers: request.headers,
+      body: request.body,
+    });
+    
+    return await fetch(githubRequest);
+  }
+}
+```
+
+8. 点击 **Save and Deploy**
+
+</Steps>
+
+### 获取 Worker URL
+
+部署成功后，你会得到一个 URL：
+
+```
+https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev
+```
+
+复制这个 URL，稍后会用到。
+
+## 配置快捷指令
+
+现在需要修改 Moire Config，让它使用你的代理。
+
+<Steps>
+
+1. 打开「快捷指令」App
+
+2. 找到 **Moire Config**
+
+3. 点击右上角的 **...** → **编辑**
+
+4. 找到 **API Base URL** 变量（通常在顶部）
+
+5. 将默认值 `https://api.github.com` 改为你的 Worker URL：
+   ```
+   https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev
+   ```
+
+6. 点击 **完成**
+
+7. 重新运行一次 **Moire Config** 来保存配置
+
+</Steps>
+
+## 测试代理
+
+配置完成后，测试一下：
+
+1. 在备忘录 Moire 文件夹写一篇测试笔记
+2. 关闭备忘录触发同步
+3. 如果成功，说明代理工作正常 ✅
+
+## 性能对比
+
+| 场景 | 直连 GitHub API | 使用 CF Workers |
+|------|----------------|-----------------|
+| 国外 | 快速 ⚡ | 快速 ⚡ |
+| 国内（有墙） | 很慢/失败 🐌 | 快速 ⚡ |
+| 国内（无墙） | 中等 | 快速 ⚡ |
+
+:::tip[推荐所有国内用户使用]
+即使你的网络可以访问 GitHub，使用 Workers 代理仍然能提升速度。
+:::
+
+## 安全性说明
+
+### 代码开源
+
+Workers 代码完全开源，你可以审查：
+- [GitHub 仓库](https://github.com/moirelog/github-api-proxy)
+
+### 隐私保护
+
+Workers 只是转发请求，**不会**：
+- ❌ 记录日志
+- ❌ 存储 Token
+- ❌ 修改请求内容
+
+### 自托管
+
+如果不信任我们的代码，你可以：
+1. 审查源码
+2. 部署自己的 Worker
+3. 完全掌控
+
+## 故障排查
+
+### Workers 部署失败？
+
+- 确保 Cloudflare 账号已验证邮箱
+- 免费计划有每日 100,000 请求限制（对个人博客完全够用）
+
+### 快捷指令仍然失败？
+
+- 检查 API Base URL 是否正确填写
+- 确保 URL 没有多余的 `/` 结尾
+- 尝试在浏览器访问 Worker URL，看是否返回 404（正常）
+
+## 下一步
+
+如果你想使用自定义域名展示博客。
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="自定义域名"
+  description="绑定你自己的域名"
+  href="/advanced/custom-domain/"
+/>

@@ -1,0 +1,66 @@
+---
+title: Moire 简介
+description: 了解 Moire 是什么，以及它能为你做什么
+---
+
+**Moire** 是一个无服务器的博客引擎，它能够将你的 Apple 备忘录同步到个人网站。
+
+
+## 什么是 Moire？
+
+Moire 让你可以：
+- 📝 **在熟悉的环境中写作** - 使用 Apple 原生的备忘录 App
+- 🔄 **自动同步** - 关闭备忘录后自动发布到网站
+- 🎨 **个性化展示** - 多种精美主题可选
+- 🔒 **完全掌控数据** - 所有内容存储在你的 GitHub 仓库
+
+## 核心理念
+
+### 原生体验优先
+
+很多博客工具要求你安装专门的写作软件，学习新的编辑器，或者登录网页后台。Moire 不同——你只需要使用 iPhone/iPad/Mac 上原生的备忘录 App。
+
+### 数据所有权
+
+你的笔记不会存储在任何第三方服务器上。所有内容都以 Markdown 格式存储在你自己的 GitHub 仓库中，你可以随时导出、备份或迁移。
+
+### 零服务器成本
+
+Moire 利用 GitHub Actions 和 GitHub Pages（或 Vercel），无需购买或维护任何服务器。完全免费。
+
+## 技术架构
+
+```
+用户写笔记
+    ↓
+iOS 快捷指令 (Moire Sync)
+    ↓
+GitHub API (上传 Markdown + 图片)
+    ↓
+GitHub Actions (自动触发构建)
+    ↓
+SvelteKit 静态站点生成
+    ↓
+GitHub Pages / Vercel (部署)
+```
+
+## 适合谁使用？
+
+Moire 特别适合：
+
+- ✅ **Apple 生态用户** - 日常使用 iPhone/iPad/Mac 记笔记
+- ✅ **技术爱好者** - 熟悉 GitHub 基本操作
+- ✅ **注重隐私** - 希望数据完全由自己掌控
+- ✅ **极简主义者** - 不想管理复杂的博客后台
+
+## 下一步
+
+准备开始了吗？
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="安装与部署"
+  description="从零开始搭建你的 Moire 博客"
+  href="/getting-started/prerequisites/"
+/>

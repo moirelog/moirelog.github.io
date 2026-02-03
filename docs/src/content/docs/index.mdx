@@ -1,0 +1,64 @@
+---
+title: Moire
+description: 将 Apple 备忘录同步到网页，永远保留你的想法
+template: splash
+hero:
+  tagline: 将 Apple Notes 同步到网页，永久保存你的思考
+  image:
+    file: ../../assets/moire-logo.svg
+  actions:
+    - text: 开始使用
+      link: /introduction/
+      icon: right-arrow
+      variant: primary
+    - text: 在 GitHub 上查看
+      link: https://github.com/moirelog/moire
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## 为什么选择 Moire？
+
+<CardGrid stagger>
+	<Card title="原生体验" icon="apple">
+		直接在 Apple 备忘录中写作，无需安装任何第三方应用。使用你熟悉的写作环境，无需改变习惯。
+	</Card>
+	<Card title="数据所有权" icon="approve-check">
+		所有数据存储在你自己的 GitHub 仓库中。完全私有，永久保存，随时可导出，数据完全由你掌控。
+	</Card>
+	<Card title="精美主题" icon="seti:css">
+		提供多套精心设计的主题风格：票据风、赛博朋克、学术风、像素游戏风等，满足不同审美需求。
+	</Card>
+	<Card title="一键同步" icon="rocket">
+		关闭备忘录后即可自动同步到网站。基于 iOS 快捷指令和 GitHub Actions，无需服务器成本。
+	</Card>
+</CardGrid>
+
+## 工作原理
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Apple Notes   │───▶│  iOS Shortcut   │───▶│   GitHub Repo   │
+│   写作          │    │  Moire Sync     │    │   存储          │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                                                      │
+                                                      ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Your Website  │◀───│ GitHub Actions  │◀───│   自动触发      │
+│   发布          │    │   构建部署      │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+## 快速开始
+
+准备好了吗？只需三步即可拥有你的博客：
+
+1. **Fork 仓库** - 复制 Moire 到你的 GitHub
+2. **配置 Token** - 生成并配置访问令牌
+3. **安装快捷指令** - 下载并配置 iOS 快捷指令
+
+<Card title="立即开始" icon="document">
+  查看 [安装与部署指南](/getting-started/prerequisites/) 获取详细步骤。
+</Card>
+

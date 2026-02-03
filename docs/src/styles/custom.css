@@ -1,0 +1,101 @@
+/* Moire Docs Custom Styles - Fresh Green Theme */
+
+/* Fresh, natural green color scheme */
+:root {
+	/* Fresh, natural green (Tailwind Green 500) */
+	--sl-color-accent: #22c55e;
+	/* Deeper green for high contrast text (Tailwind Green 700) */
+	--sl-color-accent-high: #15803d;
+	/* Stabilize line height to prevent jumps */
+	--sl-line-height: 1.75;
+}
+
+:root[data-theme='light'] {
+	/* Slightly darker green for light mode readability (Tailwind Green 600) */
+	--sl-color-accent: #16a34a;
+	/* Deep green for text (Tailwind Green 800) */
+	--sl-color-accent-high: #166534;
+}
+
+/* Custom Aside (callout) styles with green theme */
+.sl-markdown-content :is(.starlight-aside) {
+	border-radius: 0.5rem;
+	border-width: 1px;
+	padding: 1rem 1.25rem;
+}
+
+/* Note - Neutral green (matches Tip now, or slightly different?) */
+/* Let's make Note use the primary accent color (Green 500) */
+.sl-markdown-content .starlight-aside--note {
+	background-color: rgba(34, 197, 94, 0.1);
+	border-color: rgba(34, 197, 94, 0.3);
+}
+
+:root[data-theme='light'] .sl-markdown-content .starlight-aside--note {
+	background-color: rgba(34, 197, 94, 0.08);
+	border-color: rgba(22, 163, 74, 0.25);
+}
+
+/* Tip - Bright green */
+.sl-markdown-content .starlight-aside--tip {
+	background-color: rgba(34, 197, 94, 0.12);
+	border-color: rgba(34, 197, 94, 0.35);
+}
+
+:root[data-theme='light'] .sl-markdown-content .starlight-aside--tip {
+	background-color: rgba(34, 197, 94, 0.1);
+	border-color: rgba(22, 163, 74, 0.3);
+}
+
+/* Caution - Amber/yellow */
+.sl-markdown-content .starlight-aside--caution {
+	background-color: rgba(245, 158, 11, 0.1);
+	border-color: rgba(245, 158, 11, 0.3);
+}
+
+:root[data-theme='light'] .sl-markdown-content .starlight-aside--caution {
+	background-color: rgba(245, 158, 11, 0.08);
+	border-color: rgba(217, 119, 6, 0.25);
+}
+
+/* Danger - Red */
+.sl-markdown-content .starlight-aside--danger {
+	background-color: rgba(239, 68, 68, 0.1);
+	border-color: rgba(239, 68, 68, 0.3);
+}
+
+:root[data-theme='light'] .sl-markdown-content .starlight-aside--danger {
+	background-color: rgba(239, 68, 68, 0.08);
+	border-color: rgba(220, 38, 38, 0.25);
+}
+
+/* Feature cards */
+.sl-markdown-content .card-grid {
+	gap: 1.5rem;
+}
+
+/* Custom badge styles */
+.badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.25rem 0.75rem;
+	border-radius: 9999px;
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+.badge-success {
+	background-color: #22c55e;
+	color: white;
+}
+
+.badge-warning {
+	background-color: #f59e0b;
+	color: white;
+}
+
+.badge-danger {
+	background-color: #ef4444;
+	color: white;
+}
+
