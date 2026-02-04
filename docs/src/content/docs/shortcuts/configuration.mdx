@@ -1,55 +1,38 @@
 ---
 title: 填写配置
-description: 运行 Moire Config 并填写 GitHub 信息
+description: 编辑 Moire Config 并填写 GitHub 信息
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-下载快捷指令后，需要运行 **Moire Config** 来填写你的 GitHub 信息。
+下载快捷指令后，需要编辑 **Moire Config** 来填写你的 GitHub 信息。
 
-## 运行 Moire Config
+## 编辑 Moire Config
 
 <Steps>
 
 1. 打开「快捷指令」App
 
-2. 找到并点击 **Moire Config**
+2. 找到并右键点击 **Moire Config** 并选择「Edit」
 
-3. 系统会提示你填写三个信息
+3. workflow 中已经有多项配置，找到下面的变量并填入你的信息
 
 </Steps>
 
 ## 填写信息
 
-快捷指令会依次询问你以下信息：
 
-### 1. GitHub User (用户名)
+### 1. owner (用户名)
 
 输入你的 GitHub 用户名（**不是**邮箱）。
 
 **示例**：
 ```
-john-doe
+aeris
 ```
 
-:::caution[常见错误]
-- ❌ 不要输入邮箱地址
-- ❌ 不要输入完整 URL
-- ✅ 只需要用户名本身
-:::
 
-### 2. GitHub Repo (仓库名)
-
-输入你 Fork 的仓库名称。
-
-**示例**：
-```
-moire
-```
-
-如果你 Fork 时重命名了仓库（比如改成 `my-blog`），则填写新名称。
-
-### 3. GitHub Token
+### 2. token
 
 粘贴你在[部署网站](/getting-started/installation/#step-4-生成-token)步骤生成的 Token。
 
@@ -57,6 +40,17 @@ moire
 ```
 github_pat_xxxxxxxxxxxxxxxxxxxxxx_xxxxxxxxxxxxxxx
 ```
+
+
+### 3. repo (仓库名)
+
+此项一般无需修改，但如果你 Fork 时重命名了仓库，则填写新名称。
+
+**示例**：
+```
+moire
+```
+
 
 :::danger[Token 安全]
 - Token 会安全地存储在你的设备上
@@ -70,29 +64,17 @@ github_pat_xxxxxxxxxxxxxxxxxxxxxx_xxxxxxxxxxxxxxx
 
 | 字段 | 值 |
 |------|------|
-| User | `john-doe` |
+| User | `aeris` |
 | Repo | `moire` |
 | Token | `github_pat_abc123...` |
 
 填写完成后，这些配置会保存在快捷指令的字典中。
 
-## 验证配置
-
-填写完成后，你可以：
-
-1. 再次运行 **Moire Config**
-2. 它会显示当前保存的配置
-3. 如果信息有误，可以选择重新填写
-
 ## 常见问题
-
-### 填错了怎么办？
-
-直接再次运行 **Moire Config**，输入新的正确信息即可覆盖。
 
 ### 需要在每台设备上都配置吗？
 
-是的。快捷指令配置**不会**在设备间同步，如果你在多台设备（iPhone + iPad）使用 Moire，需要分别配置。
+不需要。快捷指令配置**会**在设备间同步，如果你在多台设备（iPhone + iPad）使用 Moire，无需重复配置。
 
 ## 下一步
 

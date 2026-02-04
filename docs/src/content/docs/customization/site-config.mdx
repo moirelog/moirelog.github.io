@@ -3,6 +3,9 @@ title: 站点配置
 description: 修改网站标题、作者、描述等基本信息
 ---
 
+
+import { Steps } from '@astrojs/starlight/components';
+
 通过修改 `moire.config.ts` 文件，你可以自定义网站的基本信息。
 
 ## 配置文件位置
@@ -22,7 +25,7 @@ export default {
   title: "My Moire Blog",
   
   // 作者名称
-  author: "John Doe",
+  author: "Aeris",
   
   // 网站描述（用于 SEO）
   description: "My personal blog powered by Moire",
@@ -33,14 +36,9 @@ export default {
   // 主题选择
   theme: "receipt",
   
-  // 头像 URL（可选）
-  avatar: "https://avatars.githubusercontent.com/u/YOUR_ID",
+  // 你所在的时区
+  utcOffset: 8
   
-  // 社交链接（可选）
-  social: {
-    github: "https://github.com/yourusername",
-    twitter: "https://twitter.com/yourusername",
-  },
 }
 ```
 
@@ -94,26 +92,12 @@ export default {
 
 主题风格，详见[主题风格](/customization/themes/)章节。
 
-### avatar
+### utcOffset
 
-**类型**：`string`（可选）  
-**格式**：图片 URL
+**类型**：`number`  
+**默认值**：`8`
 
-作者头像链接。推荐使用：
-- GitHub 头像：`https://avatars.githubusercontent.com/u/YOUR_USER_ID`
-- Gravatar：`https://www.gravatar.com/avatar/YOUR_HASH`
-
-### social
-
-**类型**：`object`（可选）
-
-社交媒体链接，会在页面某处显示图标链接。
-
-支持的平台：
-- `github`
-- `twitter`
-- `mastodon`
-- `email`
+你所在的时区，用于计算文章的发布时间。
 
 ## 示例配置
 
@@ -122,15 +106,12 @@ export default {
 ```typescript
 export default {
   title: "莫尔的笔记本",
-  author: "张三",
+  author: "Aeris",
   description: "记录技术、生活与思考",
   pageSize: 8,
   theme: "academic",
   avatar: "https://avatars.githubusercontent.com/u/123456",
-  social: {
-    github: "https://github.com/zhangsan",
-    email: "zhangsan@example.com",
-  },
+  utcOffset: 8
 }
 ```
 
@@ -138,9 +119,13 @@ export default {
 
 修改配置后：
 
-1. **提交到 GitHub**（通过 Git 或 GitHub 网页编辑）
+<Steps>
+
+1. **提交到 GitHub**（通过 Git 或 GitHub [网页编辑](https://docs.github.com/zh/repositories/working-with-files/managing-files/editing-files)）
 2. GitHub Actions 会自动构建
 3. 等待 1-2 分钟，刷新网站即可看到更改
+
+</Steps>
 
 :::tip[本地预览]
 如果你克隆了仓库到本地，可以运行 `npm run dev` 即时预览配置更改。

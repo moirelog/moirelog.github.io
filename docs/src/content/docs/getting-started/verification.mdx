@@ -31,8 +31,7 @@ import { Steps } from '@astrojs/starlight/components';
 
 | 状态 | 图标 | 含义 |
 |------|------|------|
-| Queued | ⏳ | 等待执行 |
-| In progress | 🔵 | 正在构建 |
+| In progress | 🟡 | 正在构建 |
 | Success | ✅ | 构建成功 |
 | Failure | ❌ | 构建失败 |
 
@@ -48,10 +47,10 @@ import { Steps } from '@astrojs/starlight/components';
 https://<YOUR_USERNAME>.github.io/<REPO_NAME>/
 ```
 
-例如，如果你的 GitHub 用户名是 `john`，仓库名是 `moire`：
+例如，如果你的 GitHub 用户名是 `aeris`，仓库名是 `moire`：
 
 ```
-https://john.github.io/moire/
+https://aeris.github.io/moire/
 ```
 
 :::note[首次访问]
@@ -64,9 +63,9 @@ https://john.github.io/moire/
 
 如果 Actions 显示红色 ❌：
 
-1. 点击失败的工作流查看详细日志
-2. 检查是否正确开启了 Actions 权限
-3. 检查 Pages 是否设置为 "GitHub Actions"
+- 点击失败的工作流查看详细日志
+- 检查是否正确开启了 GitHub Actions 权限
+- 检查 Build and deployment 的 Source 是否设置为 GitHub Actions
 
 如需帮助，请查看 [故障排除](/troubleshooting/) 章节。
 
@@ -74,7 +73,6 @@ https://john.github.io/moire/
 
 如果网站可以访问但显示空白：
 
-- 确认 Fork 时没有勾选 "Copy main branch only"
 - 如果是空仓库，正常显示空白，等你添加第一篇笔记后就会有内容
 
 ## 恭喜！🎉

@@ -15,20 +15,14 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 2. 点击右上角的 **Fork** 按钮
 
-3. **重要**：取消勾选 "Copy `main` branch only"
-   
-    :::caution[不要只复制 main 分支]
-    Moire 使用其他分支存储 Demo 数据，如果只复制 main 分支，初始网站将是空白的。
-    :::
-
-4. 点击 **Create fork**
+3. 点击 **Create fork**
 
 </Steps>
 
 ## Step 2: 开启 Actions
 
-:::danger[🚨 重点步骤]
-Fork 的仓库默认**禁用** GitHub Actions，必须手动开启，否则网站无法自动构建！
+:::danger[重点步骤]
+Fork 的仓库默认**禁用** GitHub Actions，必须手动开启，否则网站无法自动构建。
 :::
 
 <Steps>
@@ -47,8 +41,8 @@ Fork 的仓库默认**禁用** GitHub Actions，必须手动开启，否则网�
 
 ## Step 3: 配置 Pages
 
-:::danger[🚨 重点步骤]
-必须将 Pages 的构建方式设置为 GitHub Actions，否则部署会失败！
+:::danger[重点步骤]
+必须将 Pages 的构建方式设置为 GitHub Actions，否则部署会失败。
 :::
 
 <Steps>
@@ -74,7 +68,7 @@ Fork 的仓库默认**禁用** GitHub Actions，必须手动开启，否则网�
 3. 填写 Token 信息：
     - **Token name**: `Moire Sync` (或任意名称)
     - **Expiration**: 建议选择 90 天或更长
-    - **Repository access**: 选择 **Only select repositories**，然后选择你 Fork 的 Moire 仓库
+    - **Repository access**: 选择 **Only select repositories**，然后选 Fork 的 Moire 仓库
 
 4. 在 **Permissions** 下配置权限：
 

@@ -11,9 +11,9 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 快捷指令需要调用 GitHub API 来上传笔记，但在某些网络环境下：
 
-- ⚠️ 请求超时
-- 🐌 速度极慢
-- ❌ 连接失败
+- 请求超时
+- 速度极慢
+- 连接失败
 
 通过 Cloudflare Workers 代理，可以大幅提升速度和稳定性。
 
@@ -22,13 +22,14 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 ### 前置要求
 
 - Cloudflare 账号（免费）
-- 域名（可选，Cloudflare 提供免费子域名）
+- 自己的域名（**必须**，因为 `workers.dev` 域名在中国大陆被墙）
+- 域名已托管到 Cloudflare
 
 ### 快速部署
 
 我们提供了一键部署按钮：
 
-<LinkButton href="https://deploy.workers.cloudflare.com/?url=https://github.com/moirelog/github-api-proxy" variant="primary" icon="rocket">
+<LinkButton href="https://deploy.workers.cloudflare.com/?url=https://github.com/moirelog/github-api-proxy" variant="secondary" icon="rocket">
   一键部署到 Cloudflare Workers
 </LinkButton>
 
@@ -77,13 +78,28 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 ### 获取 Worker URL
 
-部署成功后，你会得到一个 URL：
+部署成功后，你会得到一个 URL，例如 `https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev`。
+
+:::caution[域名被墙警告]
+`*.workers.dev` 域名在中国大陆通常无法访问。你需要绑定自己的域名才能使用。
+:::
+
+### 绑定自定义域名
+
+<Steps>
+1. 在 Worker 页面，点击 **Settings** -> **Triggers**
+2. 点击 **Add Custom Domain**
+3. 输入你的子域名（如 `api.yourdomain.com`）
+4. 点击 **Add Custom Domain**
+</Steps>
+
+现在，你的 Worker URL 就是：
 
 ```
-https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev
+https://api.yourdomain.com
 ```
 
-复制这个 URL，稍后会用到。
+复制这个自定义域名 URL，稍后会用到。
 
 ## 配置快捷指令
 
@@ -99,9 +115,9 @@ https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev
 
 4. 找到 **API Base URL** 变量（通常在顶部）
 
-5. 将默认值 `https://api.github.com` 改为你的 Worker URL：
+5. 将默认值 `https://api.github.com` 改为你的自定义域名 URL：
    ```
-   https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev
+   https://api.yourdomain.com
    ```
 
 6. 点击 **完成**
@@ -114,17 +130,8 @@ https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev
 
 配置完成后，测试一下：
 
-1. 在备忘录 Moire 文件夹写一篇测试笔记
-2. 关闭备忘录触发同步
-3. 如果成功，说明代理工作正常 ✅
+在 Moire 文件夹写一篇测试笔记，关闭备忘录或 `Ctrl + S` 触发同步，如果成功，说明代理工作正常 ✅
 
-## 性能对比
-
-| 场景 | 直连 GitHub API | 使用 CF Workers |
-|------|----------------|-----------------|
-| 国外 | 快速 ⚡ | 快速 ⚡ |
-| 国内（有墙） | 很慢/失败 🐌 | 快速 ⚡ |
-| 国内（无墙） | 中等 | 快速 ⚡ |
 
 :::tip[推荐所有国内用户使用]
 即使你的网络可以访问 GitHub，使用 Workers 代理仍然能提升速度。
@@ -147,9 +154,11 @@ Workers 只是转发请求，**不会**：
 ### 自托管
 
 如果不信任我们的代码，你可以：
+<Steps>
 1. 审查源码
 2. 部署自己的 Worker
 3. 完全掌控
+</Steps>
 
 ## 故障排查
 
@@ -162,6 +171,7 @@ Workers 只是转发请求，**不会**：
 
 - 检查 API Base URL 是否正确填写
 - 确保 URL 没有多余的 `/` 结尾
+- **关键**：确保你使用了自定义域名，而不是 `workers.dev` 域名
 - 尝试在浏览器访问 Worker URL，看是否返回 404（正常）
 
 ## 下一步

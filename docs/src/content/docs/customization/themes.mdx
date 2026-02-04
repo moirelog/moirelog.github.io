@@ -3,6 +3,8 @@ title: 主题风格
 description: 了解并选择 Moire 提供的多种主题
 ---
 
+import { Steps } from '@astrojs/starlight/components';
+
 Moire 提供多套精心设计的主题，每个主题都有独特的视觉风格和氛围。
 
 ## 可用主题
@@ -83,14 +85,6 @@ export default {
 
 提交到 GitHub，等待构建完成即可。
 
-## 主题对比
-
-| 主题 | 色调 | 风格 | 复杂度 |
-|------|------|------|--------|
-| Receipt | 黑白 | 极简 | ⭐ |
-| Cyberpunk | 霓虹 | 科技 | ⭐⭐⭐ |
-| Academic | 中性 | 正式 | ⭐⭐ |
-| Pixel | 彩色 | 复古 | ⭐⭐⭐ |
 
 ## 自定义主题（进阶）
 
@@ -99,9 +93,14 @@ export default {
 主题文件位于：`src/themes/your-theme/`
 
 你需要：
+
+<Steps>
+
 1. 创建 `index.svelte` 组件
 2. 定义 CSS 样式
 3. 在配置中引用
+
+</Steps>
 
 详细教程请参考 [开发者文档](https://github.com/moirelog/moire/wiki)。
 

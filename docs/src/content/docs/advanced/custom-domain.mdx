@@ -58,9 +58,6 @@ Moire 支持两种部署平台，绑定域名的方式略有不同。
     | A | @ | `185.199.110.153` |
     | A | @ | `185.199.111.153` |
 
-    :::tip[推荐使用子域名]
-    使用 `blog.yourname.com` 而不是 `yourname.com`，配置更简单，且不会影响主域名的使用。
-    :::
   </TabItem>
   
   <TabItem label="Vercel">
@@ -158,10 +155,12 @@ export default {
 - 📊 流量分析
 
 设置步骤：
+<Steps>
 1. 在 Cloudflare 添加你的域名
 2. 更新域名注册商的 Nameserver 到 Cloudflare
 3. 在 Cloudflare 添加 DNS 记录
 4. 启用 **Proxied**（橙色云朵图标）
+</Steps>
 
 ### 301 重定向
 

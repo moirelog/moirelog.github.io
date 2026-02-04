@@ -1,3 +1,4 @@
 ## moirelog
 
-docs
+Yes! Docs!
+
