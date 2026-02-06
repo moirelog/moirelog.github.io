@@ -14,7 +14,7 @@ export default defineConfig({
   integrations: [
 
     starlight({
-      title: 'Moire 使用指南',
+      title: 'MOIRE BLOG',
       logo: {
         src: './src/assets/moire.svg',
         replacesTitle: false,
@@ -22,8 +22,13 @@ export default defineConfig({
       plugins: [
         starlightThemeBlack({
           navLinks: [{
-            label: 'Docs',
+            label: '使用指南',
             link: '/introduction',
+          },
+            {
+              label: '预览',
+              link: 'https://moire.blog/',
+              badge: 'demo',
           }],
           footerText:
             'Moire is a project syncing Apple Notes to GitHub Pages, designed and made by [Yanxin](https://github.com/anig1scur).'

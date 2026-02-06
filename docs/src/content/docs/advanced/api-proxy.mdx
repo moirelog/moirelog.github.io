@@ -13,7 +13,6 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 - 请求超时
 - 速度极慢
-- 连接失败
 
 通过 Cloudflare Workers 代理，可以大幅提升速度和稳定性。
 
@@ -22,7 +21,7 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 ### 前置要求
 
 - Cloudflare 账号（免费）
-- 自己的域名（**必须**，因为 `workers.dev` 域名在中国大陆被墙）
+- 自己的域名（**需要**，因为 `workers.dev` 域名也无法访问了）
 - 域名已托管到 Cloudflare
 
 ### 快速部署
@@ -80,9 +79,6 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 部署成功后，你会得到一个 URL，例如 `https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev`。
 
-:::caution[域名被墙警告]
-`*.workers.dev` 域名在中国大陆通常无法访问。你需要绑定自己的域名才能使用。
-:::
 
 ### 绑定自定义域名
 
@@ -130,35 +126,8 @@ https://api.yourdomain.com
 
 配置完成后，测试一下：
 
-在 Moire 文件夹写一篇测试笔记，关闭备忘录或 `Ctrl + S` 触发同步，如果成功，说明代理工作正常 ✅
+在 Moire 文件夹写一篇测试笔记，关闭备忘录或 `Ctrl + S` 触发同步，如果成功，说明代理工作正常
 
-
-:::tip[推荐所有国内用户使用]
-即使你的网络可以访问 GitHub，使用 Workers 代理仍然能提升速度。
-:::
-
-## 安全性说明
-
-### 代码开源
-
-Workers 代码完全开源，你可以审查：
-- [GitHub 仓库](https://github.com/moirelog/github-api-proxy)
-
-### 隐私保护
-
-Workers 只是转发请求，**不会**：
-- ❌ 记录日志
-- ❌ 存储 Token
-- ❌ 修改请求内容
-
-### 自托管
-
-如果不信任我们的代码，你可以：
-<Steps>
-1. 审查源码
-2. 部署自己的 Worker
-3. 完全掌控
-</Steps>
 
 ## 故障排查
 
