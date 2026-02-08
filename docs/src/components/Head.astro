@@ -28,8 +28,16 @@ const props = Astro.props;
     }, { passive: true });
   }
 
+  let zoom;
+
   function initImageZoom() {
-    mediumZoom('.sl-markdown-content img', {
+    const images = document.querySelectorAll('.sl-markdown-content img');
+
+    if (zoom) {
+      zoom.detach();
+    }
+    
+    zoom = mediumZoom(images, {
       margin: 24,
       background: 'rgba(0, 0, 0, 0.8)',
     });
