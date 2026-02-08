@@ -5,7 +5,7 @@ description: 了解 Moire 支持的 Markdown 语法
 
 import { Steps } from '@astrojs/starlight/components';
 
-Apple Notes 的 富文本格式非常复杂，Moire 支持将其转换为少量 Markdown 语法，以下是功能清单。
+Apple Notes 的 富文本格式比较复杂，Moire 支持将其转换为少量 Markdown 语法，以下是功能清单。
 
 ## Moire 已支持
 
@@ -51,15 +51,16 @@ Apple Notes 的 富文本格式非常复杂，Moire 支持将其转换为少量 
 3. 第三步
 ```
 
-### 代码块
+### 引用
 
 ````markdown
-```javascript
-function hello() {
-  console.log("Hello Moire!");
-}
-```
+> 这是一个引用
+> 可以用来强调重要内容
 ````
+
+效果：
+> 这是一个引用
+> 可以用来强调重要内容
 
 
 ### 图片
@@ -91,19 +92,6 @@ function hello() {
 ### 3. 适当配图
 
 一张图胜过千言万语，但不要贪多（限制 1 张）。
-
-## 测试你的 Markdown
-
-不确定效果？试试这个流程：
-
-<Steps>
-
-1. 在 Moire 文件夹写一篇测试笔记
-2. 使用你想测试的语法
-3. 同步到网站
-4. 查看渲染效果
-
-</Steps>
 
 ## 下一步
 

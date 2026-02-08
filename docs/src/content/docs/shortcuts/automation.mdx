@@ -21,27 +21,23 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 5. 点击 **选择**，找到并选择 **备忘录** App
 
-6. 勾选 **已关闭**（不要勾选"已打开"）
+6. 勾选 **已关闭**
 
-7. 点击 **下一步**
+7. 勾选 **立即运行**
 
-8. 点击 **添加操作**
+8. 点击 **下一步**
 
-9. 搜索并选择 **运行快捷指令**
-
-10. 点击 **快捷指令**，选择 **Moire Sync**
-
-11. 点击 **下一步**
-
-12. **重要**：关闭 **运行前询问**（这样才能真正自动运行）
-
-13. 点击 **完成**
+9. 搜索并选择 **Moire: Sync Notes to Github**
 
 </Steps>
+
+  ![](./ios-automation.png)
+
 
 :::tip[运行前询问]
 如果不关闭"运行前询问"，每次关闭备忘录都会弹出确认对话框，失去了自动化的意义。
 :::
+
 
 ## macOS 自动化
 
@@ -55,7 +51,7 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
   5. 完成！之后在备忘录中按下快捷键即可同步
   </Steps>
 
-  
+  ![](./mac-automation.png)
 
 ## 测试自动化
 
@@ -67,9 +63,9 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 2. 创建一篇新笔记，随便写点内容
 
-3. 关闭备忘录 App
+3. 关闭备忘录 App 或触发快捷键
 
-4. （iOS）你应该看到快捷指令图标闪现，表示正在同步
+4. 你应该看到快捷指令图标闪现，表示正在同步
 
 5. 过几分钟后，访问你的网站，应该能看到新笔记
 
@@ -81,8 +77,7 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 #### iOS / iPadOS
 
-- ✅ 锁屏
-- ✅ 退出 / 关闭备忘录 App
+- ✅ 锁屏 / 退出或关闭备忘录 App
 - ❌ 切换到其他笔记（不会触发）
 
 #### macOS

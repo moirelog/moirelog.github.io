@@ -9,6 +9,8 @@ const props = Astro.props;
 <ClientRouter />
 
 <script>
+  import mediumZoom from 'medium-zoom';
+ 
   // Persist sidebar scroll position across page navigations
   function persistSidebarScroll() {
     const sidebar = document.querySelector('.sidebar');
@@ -26,8 +28,16 @@ const props = Astro.props;
     }, { passive: true });
   }
 
+  function initImageZoom() {
+    mediumZoom('.sl-markdown-content img', {
+      margin: 24,
+      background: 'rgba(0, 0, 0, 0.8)',
+    });
+  }
+
   // Run on initial load and view transitions
-  document.addEventListener('astro:page-load', persistSidebarScroll);
+  document.addEventListener('astro:page-load', () => {
+    persistSidebarScroll();
+    initImageZoom();
+  });
 </script>
-
-
