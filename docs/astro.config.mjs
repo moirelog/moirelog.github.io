@@ -11,6 +11,12 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  redirects: {
+    '/shortcuts/latest/config': 'https://www.icloud.com/shortcuts/028169245b6a49b7afb1c2c147defd7a',
+    '/shortcuts/latest/sync': 'https://www.icloud.com/shortcuts/4b342969796c4a87a031874de0d69992',
+    '/shortcuts/latest/upload-image': 'https://www.icloud.com/shortcuts/b22a7c469c714d34a63fb922ed45c560',
+    '/shortcuts/latest/clean-note': 'https://www.icloud.com/shortcuts/5493417834a34bbca64c67d742a6ddae',
+  },
   integrations: [
 
     starlight({

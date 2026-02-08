@@ -5,7 +5,7 @@ description: 下载并安装 Moire Config 和 Moire Sync 快捷指令
 
 import { Steps, LinkButton, Card } from '@astrojs/starlight/components';
 
-Moire 使用两个 iOS 快捷指令来实现同步功能。
+Moire 使用四个 iOS 快捷指令来实现同步功能。
 
 ## 下载地址
 
@@ -14,21 +14,19 @@ Moire 使用两个 iOS 快捷指令来实现同步功能。
 
 **作用**：存储你的 GitHub 配置信息（用户名、仓库名、 Token）。
 
-**安装顺序**：必须**最先**安装。
-
-<LinkButton href="/shortcuts/latest/config" variant="primary" icon="download">
+<LinkButton href="/shortcuts/latest/config" variant="primary" icon="download" target="_blank">
   下载 Moire Config
 </LinkButton>
 
-### 2. 功能组件 (依赖 Config)
+### 2. 功能组件
 
 这两个快捷指令负责具体的数据转换和上传功能。
 
 <div class="flex gap-4 flex-wrap">
-  <LinkButton href="/shortcuts/latest/upload-image" variant="secondary" icon="download">
+  <LinkButton href="/shortcuts/latest/upload-image" variant="secondary" icon="download" target="_blank">
     下载 Upload Image
   </LinkButton>
-  <LinkButton href="/shortcuts/latest/clean-note" variant="secondary" icon="download">
+  <LinkButton href="/shortcuts/latest/clean-note" variant="secondary" icon="download" target="_blank">
     下载 Clean Note
   </LinkButton>
 </div>
@@ -37,43 +35,28 @@ Moire 使用两个 iOS 快捷指令来实现同步功能。
 
 **作用**：将备忘录内容同步到 GitHub的主程序。
 
-**安装顺序**：必须在 Config 和功能组件之后安装。
-
-<LinkButton href="/shortcuts/latest/sync" variant="secondary" icon="download">
+<LinkButton href="/shortcuts/latest/sync" variant="secondary" icon="download" target="_blank">
   下载 Moire Sync
 </LinkButton>
-
-## 依赖关系
-
-
-
-```
-Moire Config (基础配置)
-       ↓
-Upload Image & Clean Note (功能组件)
-       ↓
-Moire Sync (主程序)
-```
 
 
 ## 安装步骤
 
 <Steps>
 
-1. 下载并安装 **Moire Config**
+1. 下载并安装下方列出的 4 个快捷指令。
 
-2. 下载并安装 **Upload Image** 和 **Clean Note**
-
-3. 下载并安装 **Moire Sync**
-
-4. 完成！你应该在「快捷指令」App 中看到 4 个新快捷指令
+2. 完成！你应该在「快捷指令」App 中看到 4 个新快捷指令。
 
 </Steps>
 
 
+
+![](./moire_shortcuts.png)
+
 ## 版本信息
 
-当前版本：**v1.2.0** (2026-02-03)
+当前版本：**v1.0.0** (2026-02-07)
 
 :::tip[检查更新]
 快捷指令内部包含版本号。你可以打开快捷指令查看顶部的注释来确认版本。

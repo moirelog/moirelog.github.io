@@ -1,0 +1,32 @@
+{
+  "suite_name": "Moire",
+  "current_version": "1.0.0",
+  "release_date": "2026-02-07",
+  "update_notes": "初始版本发布：支持 Apple Notes 同步至 GitHub 并自动处理图片。",
+  "installer_config": {
+    "min_ios_version": "16.0",
+    "config_path": "Shortcuts/Moire/config.json"
+  },
+  "shortcuts": [
+    {
+      "id": "config",
+      "name": "Moire: Config",
+      "url": "https://www.icloud.com/shortcuts/028169245b6a49b7afb1c2c147defd7a"
+    },
+    {
+      "id": "upload_image",
+      "name": "Moire: Upload Image to Github",
+      "url": "https://www.icloud.com/shortcuts/b22a7c469c714d34a63fb922ed45c560"
+    },
+    {
+      "id": "clean_note",
+      "name": "Moire: Clean Note to Markdown",
+      "url": "https://www.icloud.com/shortcuts/5493417834a34bbca64c67d742a6ddae"
+    },
+    {
+      "id": "sync_notes",
+      "name": "Moire: Sync Notes to Github",
+      "url": "https://www.icloud.com/shortcuts/4b342969796c4a87a031874de0d69992"
+    }
+  ]
+}
