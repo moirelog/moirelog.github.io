@@ -26,13 +26,15 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 我们提供了一键部署按钮（基于独立仓库 [github-api-proxy](https://github.com/moirelog/github-api-proxy)）：
 
-<LinkButton href="https://deploy.workers.cloudflare.com/?url=https://github.com/moirelog/github-api-proxy" variant="secondary" icon="rocket">
+<LinkButton target="_blank" href="https://deploy.workers.cloudflare.com/?url=https://github.com/moirelog/github-api-proxy" variant="secondary" icon="rocket">
   一键部署到 Cloudflare Workers
 </LinkButton>
 
+![](./deploy-worker.png)
+
 ### 手动部署
 
-如果你想自定义代码，可以克隆我们的 worker 仓库进行部署：
+或者如果你想自定义代码，可以克隆 worker 仓库进行手动部署：
 
 <Steps>
 
@@ -50,7 +52,7 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 ### 获取 Worker URL
 
-部署成功后，你会得到一个 URL，例如 `https://github-api-proxy.YOUR_SUBDOMAIN.workers.dev`。
+部署成功后，你会得到一个 URL，例如 `https://github-api-proxy.YOUR_DOMAIN.workers.dev`
 
 
 ### 绑定自定义域名
@@ -62,6 +64,8 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 4. 输入你的子域名（如 `api.yourdomain.com`）
 5. 点击 **Add Custom Domain**
 </Steps>
+
+![](./api-proxy.png)
 
 现在，你的 Worker URL 就是：
 
@@ -83,7 +87,7 @@ https://api.yourdomain.com
 
 3. 点击右上角的 **...** → **编辑**
 
-4. 找到 **API Base URL** 变量（通常在顶部）
+4. 找到 **proxy** 变量（通常在顶部）
 
 5. 将默认值 `https://api.github.com` 改为你的自定义域名 URL：
    ```
@@ -100,7 +104,7 @@ https://api.yourdomain.com
 
 配置完成后，测试一下：
 
-在 Moire 文件夹写一篇测试笔记，关闭备忘录或 `Ctrl + S` 触发同步，如果成功，说明代理工作正常
+在 Moire 文件夹写一篇测试笔记，关闭备忘录或 `^S` 触发同步，若成功说明代理工作正常
 
 
 ## 故障排查

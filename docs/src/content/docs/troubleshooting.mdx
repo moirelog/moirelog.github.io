@@ -61,7 +61,7 @@ import { Steps } from '@astrojs/starlight/components';
   
 <Steps>
 
-1. 检查 Moire Config 中的 API Base URL 是否正确：
+1. 检查 Moire Config 中的 proxy 是否正确：
    - 默认应该是 `https://api.github.com`
    - 如果使用代理，确保 Workers URL 正确
 2. 测试网络连接：在浏览器访问 `https://api.github.com`
@@ -189,12 +189,13 @@ import { Steps } from '@astrojs/starlight/components';
 
 如果遇到问题，按顺序检查：
 
-- [ ] GitHub Token 正确且有效
+- [ ] GitHub Personal Access Token 正确且有效
 - [ ] Token 权限包含 Contents 和 Workflows 的读写
 - [ ] Actions 已开启（Settings → Actions → Allow all）
-- [ ] Pages 设置为 "GitHub Actions"
-- [ ] Moire Config 填写正确（User, Repo, Token）
+- [ ] GitHub Pages Source 设置为 "GitHub Actions"
+- [ ] Moire Config 填写正确（User, Repo, Token, Proxy）
 - [ ] 笔记在 iCloud 的 "Moire" 文件夹
+- [ ] Sync 指令中已绑定正确的 Notes 文件夹
 - [ ] 快捷指令自动化已启用
 
 ## 仍然无法解决？
@@ -206,10 +207,11 @@ import { Steps } from '@astrojs/starlight/components';
    - 创建新 Issue 描述你的问题
 
 2. **提供信息**：
+   - 请抹掉敏感信息，千万不要提供 Token
    - 你的操作系统版本（iOS/macOS）
+   - GitHub Actions 日志（如果相关）
    - 快捷指令版本
    - 错误截图
-   - GitHub Actions 日志（如果相关）
 
 3. **社区讨论**: [GitHub Discussions](https://github.com/moirelog/moire/discussions)
 
