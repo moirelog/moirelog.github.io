@@ -37,7 +37,7 @@ export default defineConfig({
               badge: 'demo',
           }],
           footerText:
-            'Moire is a project syncing Apple Notes to GitHub Pages, designed and made by [Yanxin](https://github.com/anig1scur).'
+            'Moire is a project syncing Apple Notes to GitHub Pages, designed by [Yanxin](https://github.com/anig1scur).'
         })
       ],
       social: [
@@ -91,6 +91,7 @@ export default defineConfig({
           items: [
             { label: 'API 加速', slug: 'advanced/api-proxy' },
             { label: '自定义域名', slug: 'advanced/custom-domain' },
+            { label: '获取更新', slug: 'advanced/upstream-sync' },
           ],
         },
         {

@@ -24,9 +24,7 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 - 自己的域名（**需要**，因为 `workers.dev` 域名也无法访问了）
 - 域名已托管到 Cloudflare
 
-### 快速部署
-
-我们提供了一键部署按钮：
+我们提供了一键部署按钮（基于独立仓库 [github-api-proxy](https://github.com/moirelog/github-api-proxy)）：
 
 <LinkButton href="https://deploy.workers.cloudflare.com/?url=https://github.com/moirelog/github-api-proxy" variant="secondary" icon="rocket">
   一键部署到 Cloudflare Workers
@@ -34,44 +32,19 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 ### 手动部署
 
-如果一键部署不可用，可以手动部署：
+如果你想自定义代码，可以克隆我们的 worker 仓库进行部署：
 
 <Steps>
 
-1. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
-
-2. 进入 **Workers & Pages**
-
-3. 点击 **Create application** → **Create Worker**
-
-4. 给 Worker 命名（如 `github-api-proxy`）
-
-5. 点击 **Deploy**
-
-6. 部署后，点击 **Edit code**
-
-7. 粘贴以下代码：
-
-    ```javascript
-    export default {
-      async fetch(request) {
-        const url = new URL(request.url);
-        
-        // 将请求转发到 GitHub API
-        const githubUrl = `https://api.github.com${url.pathname}${url.search}`;
-        
-        const githubRequest = new Request(githubUrl, {
-          method: request.method,
-          headers: request.headers,
-          body: request.body,
-        });
-        
-        return await fetch(githubRequest);
-      }
-    }
-    ```
-
-8. 点击 **Save and Deploy**
+1. 确保安装了 Node.js
+2. 克隆仓库并部署：
+   ```bash
+   git clone https://github.com/moirelog/github-api-proxy.git
+   cd github-api-proxy
+   npm install
+   npx wrangler deploy
+   ```
+3. 根据提示登录 Cloudflare 账号并确认部署。
 
 </Steps>
 
@@ -83,10 +56,11 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 ### 绑定自定义域名
 
 <Steps>
-1. 在 Worker 页面，点击 **Settings** -> **Triggers**
-2. 点击 **Add Custom Domain**
-3. 输入你的子域名（如 `api.yourdomain.com`）
-4. 点击 **Add Custom Domain**
+1. 在 Worker 页面，点击 **Settings**
+2. 点击 **Domains & Routes** 标题旁边的 **Add**
+3. 选择 **Custom Domain**
+4. 输入你的子域名（如 `api.yourdomain.com`）
+5. 点击 **Add Custom Domain**
 </Steps>
 
 现在，你的 Worker URL 就是：
@@ -138,10 +112,10 @@ https://api.yourdomain.com
 
 ### 快捷指令仍然失败？
 
-- 检查 API Base URL 是否正确填写
+- 检查 Moire Config 中的 proxy URL 是否正确填写
 - 确保 URL 没有多余的 `/` 结尾
 - **关键**：确保你使用了自定义域名，而不是 `workers.dev` 域名
-- 尝试在浏览器访问 Worker URL，看是否返回 404（正常）
+- 尝试在浏览器访问 Worker URL，看是否返回 404
 
 ## 下一步
 
