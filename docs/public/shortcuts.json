@@ -11,7 +11,7 @@
     {
       "id": "config",
       "name": "Moire: Config",
-      "url": "https://www.icloud.com/shortcuts/382e243e68a6493887636600819573f6"
+      "url": "https://www.icloud.com/shortcuts/1f724e2236124ba5805e262341c7b0a2"
     },
     {
       "id": "upload_image",
@@ -21,12 +21,12 @@
     {
       "id": "clean_note",
       "name": "Moire: Clean Note to Markdown",
-      "url": "https://www.icloud.com/shortcuts/248270407dcd4cd3b213a4bd101954bc"
+      "url": "https://www.icloud.com/shortcuts/e121b8c361c94cba98e4c7f9ebff68b5"
     },
     {
       "id": "sync",
       "name": "Moire: Sync Notes to Github",
-      "url": "https://www.icloud.com/shortcuts/92744e6da6184c409c62f428579c60f6"
+      "url": "https://www.icloud.com/shortcuts/e09129cb17ee49a1b5b25efd04b3e915"
     }
   ]
 }
