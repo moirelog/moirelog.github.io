@@ -1,0 +1,94 @@
+---
+title: Create Sync Folder
+description: Create a dedicated Moire folder in Apple Notes
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+To let Moire know which notes need to be synced, we need to create a dedicated folder in Apple Notes.
+
+## Create the Moire Folder
+
+<Steps>
+
+1. Open the Apple Notes app.
+
+2. Create a new folder under the **iCloud** section.
+
+3. Name the folder **Moire** (or any name you prefer).
+
+4. Done!
+
+</Steps>
+
+:::caution[Important: Binding the Shortcut to the Folder]
+
+Since folder bindings in Shortcuts are stored as UUIDs rather than names, you need to re-bind the folder once.
+:::
+
+Please follow these steps:
+
+<Steps>
+
+1. Open the Shortcuts app.
+2. Find **Moire: Sync Notes to Github** and right-click to edit.
+3. Find the step "Find all notes".
+4. Click on "Folder" in the filter criteria and select the folder you just created.
+
+</Steps>
+
+![](../../shortcuts/folder-name-moire.png)
+
+## Why Need a Dedicated Folder?
+
+### Better Organization
+
+A dedicated folder allows you to:
+- ✅ Clearly know what content will be made public
+- ✅ Better manage blog posts
+- ✅ Avoid accidental operations
+
+:::tip[Best Practice]
+Only sync content in the **Moire** folder; keep other personal notes private.
+:::
+
+
+
+
+## Folder Location
+
+Ensure the Moire folder is under the **iCloud** section, not "On My iPhone".
+
+```
+📁 iCloud
+  └── 📁 Moire  ← Create it here
+  
+📁 On My iPhone  ← Not here
+```
+
+
+## Start Creating
+
+Once the folder is created, you can start writing notes in it!
+
+### Writing Tips
+
+- 📝 Use Markdown syntax (bold, italic, links, etc.)
+- 🖼️ You can insert images (up to 1 image per note)
+- 🏷️ Use `#tags` to categorize content
+
+### Example Note
+
+![](../../shortcuts/note-example.png)
+
+## Next Steps
+
+Now that the folder is set up, finally we need to configure automation so your notes sync automatically when you close the app.
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Automation"
+  description="Set up automatic sync when closing Notes"
+  href="/en/shortcuts/automation/"
+/>

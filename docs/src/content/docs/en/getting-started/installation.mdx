@@ -1,0 +1,119 @@
+---
+title: Website Deployment
+description: Fork the repository and configure GitHub to publish your website
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+This chapter will guide you through the deployment of your Moire website, including Forking the repository, enabling Actions, configuring Pages, and generating a Token.
+
+## Step 1: Fork the Repository
+
+<Steps>
+
+1. Open the [Moire Repository](https://github.com/moirelog/moire)
+
+2. Click the **Fork** button in the top right corner
+
+3. Click **Create fork**
+
+</Steps>
+
+![](../../getting-started/create-fork.png)
+
+## Step 2: Enable Actions
+
+:::danger[Crucial Step]
+Forked repositories **disable** GitHub Actions by default. You must enable them manually, otherwise the website will not build automatically.
+:::
+
+<Steps>
+
+1. Go to your Forked repository
+
+2. Click the **Actions** tab at the top
+
+3. Click the green button: **I understand my workflows, go ahead and enable them**
+
+</Steps>
+
+![](../../getting-started/enable-actions.png)
+
+## Step 3: Configure Pages
+
+:::danger[Crucial Step]
+You must set the Pages build source to GitHub Actions, otherwise deployment will fail.
+:::
+
+<Steps>
+
+1. On the **Settings** page, find **Pages** in the left menu
+
+2. Under "Build and deployment", select **GitHub Actions** for **Source**
+
+3. No other configuration is needed; you can return after this
+
+</Steps>
+
+
+![](../../getting-started/github-pages-action.png)
+
+
+## Step 4: Generate a Token
+
+You need to generate a GitHub Personal Access Token (PAT) so the Shortcuts can upload notes to your repository.
+
+<Steps>
+
+1. Open [GitHub Developer Settings](https://github.com/settings/tokens?type=beta)
+
+2. Click **Generate new token**
+
+3. Fill in the Token info:
+    - **Token name**: `Moire Sync` (or any name)
+    - **Expiration**: Recommended to choose 90 days or longer
+    - **Repository access**: Select **Only select repositories**, then choose your Forked Moire repository
+
+4. Configure permissions under **Permissions**:
+
+    | Permission | Level | Description |
+    |------|------|------|
+    | **Contents** | Read and write | For uploading note files |
+    | **Workflows** | Read and write | For triggering build processes |
+
+5. Click **Generate token**
+
+6. **Copy and save** the generated Token
+
+    :::caution[Token is only shown once]
+    The Token is only shown once after generation. Please copy and save it immediately for upcoming configuration steps. If lost, you will need to regenerate it.
+    :::
+
+</Steps>
+
+## Token Format Description
+
+Fine-grained PAT format looks like this:
+
+```
+github_pat_xxxxxxxxxxxxxxxxxxxxxx_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+:::tip[Distinguishing Token Types]
+- Starts with `github_pat_`: Fine-grained PAT (Recommended)
+- Starts with `ghp_`: Classic PAT (Legacy)
+
+It's recommended to use a Fine-grained PAT for more granular permissions and better security.
+:::
+
+## Next Steps
+
+After generating the Token, let's verify if the deployment was successful!
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Verification"
+  description="Confirm website deployment success"
+  href="/en/getting-started/verification/"
+/>

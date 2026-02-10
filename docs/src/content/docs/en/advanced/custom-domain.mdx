@@ -1,0 +1,193 @@
+---
+title: Custom Domain
+description: Bind a custom domain to your Moire blog
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+By default, your website address is `username.github.io/moire`. By binding a custom domain, you can use a personalized address like `blog.yourname.com`.
+
+## Prerequisites
+
+- Own a domain name (can be purchased from Namecheap, Cloudflare, etc.)
+- Ability to access your domain's DNS settings
+
+## Two Deployment Methods
+
+Moire supports two deployment platforms, and the method for binding a domain differs slightly between them.
+
+<Tabs>
+  <TabItem label="GitHub Pages">
+    ## Binding a Domain on GitHub Pages
+
+    <Steps>
+
+    1. Go to your Forked repository.
+
+    2. Click **Settings** → **Pages**.
+
+    3. Under **Custom domain**, enter your domain name:
+       ```
+       blog.yourname.com
+       ```
+
+    4. Click **Save**.
+
+    5. Wait for the DNS check to complete (may take a few minutes).
+
+    6. Check **Enforce HTTPS** (highly recommended).
+
+    </Steps>
+
+    ### Configure DNS
+
+    Add DNS records at your domain provider's side:
+
+    **Using a Subdomain (Recommended)**:
+
+    | Type | Name | Value |
+    |------|------|------|
+    | CNAME | blog | `username.github.io` |
+
+    **Using a Root Domain**:
+
+    | Type | Name | Value |
+    |------|------|------|
+    | A | @ | `185.199.108.153` |
+    | A | @ | `185.199.109.153` |
+    | A | @ | `185.199.110.153` |
+    | A | @ | `185.199.111.153` |
+
+  </TabItem>
+  
+  <TabItem label="Vercel">
+    ## Binding a Domain on Vercel
+
+    <Steps>
+
+    1. Log in to [Vercel Dashboard](https://vercel.com/dashboard).
+
+    2. Select your Moire project.
+
+    3. Click **Settings** → **Domains**.
+
+    4. Enter your domain name:
+       ```
+       blog.yourname.com
+       ```
+
+    5. Click **Add**.
+
+    6. Vercel will prompt you with the DNS records you need to add.
+
+    </Steps>
+
+    ### Configure DNS
+
+    Following Vercel's instructions, this usually involves adding a CNAME record:
+
+    | Type | Name | Value |
+    |------|------|------|
+    | CNAME | blog | `cname.vercel-dns.com` |
+
+    :::note[Automatic HTTPS]
+    Vercel automatically applies for an SSL certificate for your domain; no extra configuration is needed.
+    :::
+  </TabItem>
+</Tabs>
+
+## DNS Propagation Time
+
+DNS records usually take some time to take effect:
+
+| Time Range | Description |
+|----------|------|
+| 5-10 mins | Fast providers (e.g., Cloudflare) |
+| 1-4 hours | Most providers |
+| 24-48 hours | Worst-case scenario |
+
+:::tip[Check DNS]
+Use [DNS Checker](https://dnschecker.org/) to see if your DNS records have propagated globally.
+:::
+
+## Update Configuration File
+
+After binding your domain, you need to update the `baseUrl` in `moire.config.ts`:
+
+```typescript
+export default {
+  title: "My Blog",
+  baseUrl: "https://blog.yourname.com", // Add this line
+  // ... other configs
+}
+```
+
+Commit this change to GitHub and wait for the build to complete.
+
+## Troubleshooting
+
+### DNS propagated but site still inaccessible?
+
+- Check GitHub Pages / Vercel status.
+- Ensure DNS record types and values are exactly correct.
+- Clear your browser cache.
+
+### SSL Certificate Error?
+
+- GitHub Pages: Ensure "Enforce HTTPS" is checked and wait for the certificate (up to 24 hours).
+- Vercel: Handled automatically; contact Vercel support if it fails.
+
+### Showing 404?
+
+- Ensure you updated the `baseUrl` configuration.
+- Check if GitHub Actions built successfully.
+- Try accessing `/index.html` to confirm the file exists.
+
+## Best Practices
+
+### Using Cloudflare
+
+Managing your domain through Cloudflare provides:
+
+- ⚡ CDN acceleration
+- 🛡️ DDoS protection
+- 🔒 Free SSL
+- 📊 Traffic analytics
+
+Setup steps:
+<Steps>
+1. Add your domain to Cloudflare.
+2. Update your domain registrar's Nameservers to Cloudflare's.
+3. Add DNS records in Cloudflare.
+4. Enable **Proxied** (orange cloud icon).
+</Steps>
+
+### 301 Redirects
+
+If you want to redirect the old address to your new domain:
+
+Add to `vercel.json` in Vercel:
+
+```json
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://blog.yourname.com/:path*",
+      "permanent": true
+    }
+  ]
+}
+```
+
+## Next Steps
+
+Encountering issues? Check the troubleshooting guide.
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Troubleshooting"
+  description="Common issues and solutions"
+  href="/en/troubleshooting/"
+/>

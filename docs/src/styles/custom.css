@@ -93,3 +93,8 @@ img {
   cursor: zoom-out;
   will-change: transform;
 }
+
+/* Hide the hardcoded 'Home' link in the mobile drawer */
+.links-nav a:first-child {
+  display: none;
+}

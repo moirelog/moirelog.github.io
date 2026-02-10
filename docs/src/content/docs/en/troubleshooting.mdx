@@ -1,0 +1,228 @@
+---
+title: Troubleshooting
+description: Common issues and solutions
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Encountered an issue? Here are solutions to the most common problems.
+
+
+## Sync Issues
+
+### Q: Shortcut reports "401 Bad Credentials"
+
+**Cause**: Invalid GitHub Token or insufficient permissions.
+
+**Solution**:
+
+<Steps>
+
+1. Check if the Token was copied correctly (ensure no extra spaces).
+2. Confirm Token permissions include:
+   - Contents: Read and write
+   - Workflows: Read and write
+3. Check if the Token has expired; if so, regenerate it.
+4. Re-run **Moire Config** and carefully paste the new Token.
+
+</Steps>
+
+---
+
+### Q: Notes are not appearing on the website
+
+**Possible Causes**:
+
+| Cause | How to Check | Solution |
+|------|----------|----------|
+| Sync not running | Check if the Shortcut executed | Manually run Moire Sync |
+| GitHub Actions failed | View Actions logs | Fix build errors |
+| Note in wrong folder | Confirm it's in the "Moire" folder | Move note to the correct location |
+| Not enough time elapsed | Check Actions running status | Wait for 2-3 minutes |
+
+**Check Steps**:
+
+<Steps>
+
+1. Go to your GitHub repository.
+2. Click the **Actions** tab.
+3. View the latest workflow run status.
+4. If it shows ❌, click to view the detailed logs.
+
+</Steps>
+
+---
+
+### Q: Shortcut reports "Cannot parse response"
+
+**Cause**: Incorrect API address or network issues.
+
+**Solution**:
+  
+<Steps>
+
+1. Check if the proxy in Moire Config is correct:
+   - Default should be `https://api.github.com`
+   - If using a proxy, ensure the Workers URL is correct.
+2. Test network connection: Access `https://api.github.com` in your browser.
+3. If you are in mainland China, use a VPN or refer to [API Acceleration](/en/advanced/api-proxy/) to configure a proxy.
+
+</Steps>
+
+---
+
+### Q: Images are not uploading
+
+**Possible Causes**:
+
+- Image is too large (over 1MB).
+- Image format is not supported.
+- Network timeout.
+
+**Solution**:
+
+- Compress images (Recommended tools: TinyPNG, ImageOptim).
+- Use PNG or JPG formats.
+- Ensure a stable network and retry the sync.
+
+---
+
+## Configuration Issues
+
+### Q: Modified moire.config.ts but it didn't take effect
+
+**Possible Causes**:
+
+- Changes not committed to GitHub.
+- GitHub Actions has not run.
+- Browser cache.
+
+**Solution**:
+
+<Steps>
+
+1. Confirm changes are committed and pushed to GitHub.
+2. Manually trigger Actions (or wait for automatic trigger).
+3. Force refresh your browser (Cmd/Ctrl + Shift + R).
+
+</Steps>
+
+---
+
+### Q: Repo is empty after Forking
+
+**Cause**: "Copy main branch only" was checked.
+
+**Solution**:
+
+1. Delete the current Fork.
+2. Fork again, unchecking "Copy main branch only".
+3. Alternatively: Manually create your first note; content will appear after syncing.
+
+---
+
+## Deployment Issues
+
+### Q: GitHub Actions keeps failing
+
+**Common Errors and Solutions**:
+
+| Error Message | Cause | Solution |
+|----------|------|----------|
+| `Permission denied` | Actions not enabled | Settings → Actions → Allow all |
+| `Pages build failed` | Pages misconfigured | Settings → Pages → Source select "GitHub Actions" |
+| `Resource not accessible` | Insufficient Token permissions | Regenerate Token and check permissions |
+
+---
+
+### Q: Website shows 404
+
+**Possible Causes**:
+
+- Pages not deployed.
+- Domain misconfigured.
+- Path misconfigured.
+
+**Solution**:
+
+<Steps>
+
+1. Confirm Pages is enabled (Settings → Pages).
+2. Check if the access URL is correct:
+   ```
+   https://username.github.io/reponame/
+   ```
+3. If using a custom domain, check DNS configuration.
+
+</Steps>
+---
+
+## Shortcut Issues
+
+### Q: Automation not working
+
+**iOS/iPadOS**:
+
+- Confirm automation is enabled (Shortcuts → Automation → check toggle).
+- Confirm "Ask Before Running" is turned off.
+- Try deleting and recreating the automation.
+
+**macOS**:
+
+- Use the keyboard shortcut method (more reliable).
+- Or install the Shortery App.
+
+---
+
+### Q: Shortcut download link is invalid
+
+**Cause**: iCloud sharing link has expired.
+
+**Solution**:
+
+- Check the [Changelog](/en/changelog/) for the latest link.
+- Or visit [GitHub Releases](https://github.com/moirelog/moire/releases) to download.
+
+---
+
+## Configuration Checklist
+
+If you encounter issues, check in order:
+
+- [ ] GitHub Personal Access Token is correct and valid.
+- [ ] Token permissions include Read and Write for Contents and Workflows.
+- [ ] Actions is enabled (Settings → Actions → Allow all).
+- [ ] GitHub Pages Source is set to "GitHub Actions".
+- [ ] Moire Config is filled correctly (User, Repo, Token, Proxy).
+- [ ] Note is in the "Moire" folder in iCloud.
+- [ ] Sync shortcut is bound to the correct Notes folder.
+- [ ] Shortcut automation is enabled.
+
+## Still Unresolved?
+
+### Get Help
+
+1. **GitHub Issues**: [moirelog/moire/issues](https://github.com/moirelog/moire/issues)
+   - Search for similar issues.
+   - Create a new Issue describing your problem.
+
+2. **Provide Information**:
+   - Please redact sensitive information; never provide your Token.
+   - Your OS version (iOS/macOS).
+   - GitHub Actions logs (if relevant).
+   - Shortcut version.
+   - Screenshots of the error.
+
+3. **Community Discussion**: [GitHub Discussions](https://github.com/moirelog/moire/discussions)
+
+## Next Steps
+
+View version updates and new features.
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Changelog"
+  description="View the update history for Moire"
+  href="/en/changelog/"
+/>

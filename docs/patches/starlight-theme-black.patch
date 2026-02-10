@@ -1,0 +1,111 @@
+diff --git a/src/components/Drawer.astro b/src/components/Drawer.astro
+index cdce34096ffd269a28dcd935ded5c4559a45fafc..f8198e861850b4b82e753c9b298992a4037c3ea5 100644
+--- a/src/components/Drawer.astro
++++ b/src/components/Drawer.astro
+@@ -3,7 +3,13 @@ import userConfig from 'virtual:starlight-theme-black-config'
+ import { getTranslation } from './NavBar.astro'
+ import { getRelativeLocaleUrl } from 'astro:i18n'
+ 
++interface Props {
++  locale?: string | undefined
++}
++
++const { locale: localeProp } = Astro.props
+ const { siteTitleHref, sidebar } = Astro.locals.starlightRoute
++const locale = localeProp || (Astro.url.pathname.startsWith('/en/') ? 'en' : undefined)
+ ---
+ 
+ <div popover="auto" id="drawer">
+@@ -23,7 +29,7 @@ const { siteTitleHref, sidebar } = Astro.locals.starlightRoute
+               !absoluteLinkRegex.test(nav.link) && Astro.currentLocale
+                 ? getRelativeLocaleUrl(Astro.currentLocale, nav.link)
+                 : nav.link
+-            const label = typeof nav.label === 'string' ? nav.label : getTranslation(nav.label, nav.link, 'label')
++            const label = typeof nav.label === 'string' ? nav.label : getTranslation(nav.label, nav.link, 'label', locale)
+ 
+             return (
+               <a href={link} {...nav.attrs}>
+diff --git a/src/components/NavBar.astro b/src/components/NavBar.astro
+index 679d40c60c89322d178e299720fc41b204461487..bc1a4725936ca6bba3781e8d8e6b07a1d007bb1b 100644
+--- a/src/components/NavBar.astro
++++ b/src/components/NavBar.astro
+@@ -6,22 +6,30 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
+ 
+ const currentPath = Astro.url.pathname
+ 
+-const defaultLang = starlightConfig.defaultLocale?.lang || starlightConfig.defaultLocale?.locale || 'en'
++interface Props {
++  locale?: string | undefined
++}
++
++const { locale: localeProp } = Astro.props
++const locale = localeProp || (Astro.url.pathname.startsWith('/en/') ? 'en' : starlightConfig.defaultLocale?.locale || 'root')
+ 
+-export function getTranslation(translations: Record<string, string>, link: string, description: string) {
+-  const defaultTranslation = translations[defaultLang]
++export function getTranslation(translations: Record<string, string>, link: string, description: string, currentLocale: string | undefined) {
++  const _defaultLang = starlightConfig.defaultLocale?.lang || starlightConfig.defaultLocale?.locale || 'en'
++  const _defaultLocale = starlightConfig.defaultLocale?.locale || 'root'
++  
++  const defaultTranslation = translations[_defaultLang] || translations[_defaultLocale] || Object.values(translations)[0]
+ 
+   if (!defaultTranslation) {
+     throw new AstroError(
+-      `The ${description} for "${link}" must have a key for the default language "${defaultLang}".`,
++      `The ${description} for "${link}" must have a key for the default language "${_defaultLang}".`,
+       'Update the Starlight config to include a topic label for the default language.',
+     )
+   }
+ 
+   let translation = defaultTranslation
+ 
+-  if (Astro.currentLocale) {
+-    translation = translations[Astro.currentLocale] ?? defaultTranslation
++  if (currentLocale) {
++    translation = translations[currentLocale] ?? defaultTranslation
+   }
+ 
+   return translation
+@@ -37,7 +45,7 @@ export function getTranslation(translations: Record<string, string>, link: strin
+         !absoluteLinkRegex.test(nav.link) && Astro.currentLocale
+           ? getRelativeLocaleUrl(Astro.currentLocale, nav.link)
+           : nav.link
+-      const label = typeof nav.label === 'string' ? nav.label : getTranslation(nav.label, nav.link, 'label')
++      const label = typeof nav.label === 'string' ? nav.label : getTranslation(nav.label, nav.link, 'label', locale)
+ 
+       return (
+         <a class:list={[{ active: currentPath === link }]} href={link} {...nav.attrs}>
+diff --git a/src/overrides/Header.astro b/src/overrides/Header.astro
+index 0b8d343b9c791ea9aa03f2740e5d43a428545096..3e0e23fd0b62ff7b2966b2c4ba0391fbcf709362 100644
+--- a/src/overrides/Header.astro
++++ b/src/overrides/Header.astro
+@@ -17,7 +17,7 @@ const shouldRenderSearch = config.pagefind || config.components.Search !== '@ast
+ 
+ <div class="site-title-wrapper">
+   <SiteTitle />
+-  <NavBar />
++  <NavBar locale={Astro.currentLocale} />
+ </div>
+ 
+ <MobileMenuToggle />
+diff --git a/src/overrides/PageFrame.astro b/src/overrides/PageFrame.astro
+index b703e4f243d2e21b6239b6ba640d111b1ec1435c..e83858d960e1824a8218e69634c3d57f25729cd4 100644
+--- a/src/overrides/PageFrame.astro
++++ b/src/overrides/PageFrame.astro
+@@ -7,6 +7,7 @@ import Drawer from '../components/Drawer.astro'
+ const { hasSidebar } = Astro.locals.starlightRoute
+ ---
+ 
++
+ <div class="layout">
+   <div class="layout__grid">
+     <header class="layout__header">
+@@ -41,7 +42,7 @@ const { hasSidebar } = Astro.locals.starlightRoute
+       </div>
+     </footer>
+   </div>
+-  <Drawer />
++  <Drawer locale={Astro.currentLocale} />
+ </div>
+ 
+ <style>

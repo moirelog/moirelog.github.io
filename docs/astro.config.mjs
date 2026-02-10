@@ -30,7 +30,7 @@ export default defineConfig({
   integrations: [
 
     starlight({
-      title: 'MOIRE BLOG',
+      title: 'MOIRE LOG',
       logo: {
         src: './src/assets/moire.svg',
         replacesTitle: false,
@@ -38,13 +38,13 @@ export default defineConfig({
       plugins: [
         starlightThemeBlack({
           navLinks: [{
-            label: '使用指南',
+            label: { root: '使用指南', 'zh-CN': '使用指南', en: 'User Guide' },
             link: '/introduction',
           },
-            {
-              label: '预览',
-              link: 'https://moire.blog/',
-              badge: 'demo',
+          {
+            label: { root: '预览', 'zh-CN': '预览', en: 'Preview' },
+            link: 'https://moire.blog/',
+            badge: 'demo',
           }],
           footerText:
             'Moire is a project syncing Apple Notes to GitHub Pages, designed by [Yanxin](https://github.com/anig1scur).'
@@ -61,54 +61,62 @@ export default defineConfig({
         },
         en: {
           label: 'English',
+          lang: 'en',
         },
       },
+
       sidebar: [
         {
           label: '开始',
+          translations: { en: 'Start' },
           items: [
-            { label: '简介', slug: 'introduction' },
+            { label: '简介', translations: { en: 'Introduction' }, slug: 'introduction' },
           ],
         },
         {
           label: '安装与部署',
+          translations: { en: 'Installation & Deployment' },
           items: [
-            { label: '准备工作', slug: 'getting-started/prerequisites' },
-            { label: '部署网站', slug: 'getting-started/installation' },
-            { label: '验证状态', slug: 'getting-started/verification' },
+            { label: '准备工作', translations: { en: 'Prerequisites' }, slug: 'getting-started/prerequisites' },
+            { label: '部署网站', translations: { en: 'Website Deployment' }, slug: 'getting-started/installation' },
+            { label: '验证状态', translations: { en: 'Verification' }, slug: 'getting-started/verification' },
           ],
         },
         {
           label: '配置快捷指令',
+          translations: { en: 'Configure Shortcuts' },
           items: [
-            { label: '下载快捷指令', slug: 'shortcuts/downloads' },
-            { label: '填写配置', slug: 'shortcuts/configuration' },
-            { label: '建立同步文件夹', slug: 'shortcuts/sync-folder' },
-            { label: '自动化', slug: 'shortcuts/automation' },
+            { label: '下载快捷指令', translations: { en: 'Download Shortcuts' }, slug: 'shortcuts/downloads' },
+            { label: '填写配置', translations: { en: 'Fill in Configuration' }, slug: 'shortcuts/configuration' },
+            { label: '建立同步文件夹', translations: { en: 'Create Sync Folder' }, slug: 'shortcuts/sync-folder' },
+            { label: '自动化', translations: { en: 'Automation' }, slug: 'shortcuts/automation' },
           ],
         },
         {
           label: '使用指南',
+          translations: { en: 'User Guide' },
           items: [
-            { label: '站点配置', slug: 'customization/site-config' },
-            { label: '主题风格', slug: 'customization/themes' },
-            { label: 'Markdown 支持', slug: 'usage/markdown' },
-            { label: '图片上传机制', slug: 'usage/images' },
+            { label: '站点配置', translations: { en: 'Site Configuration' }, slug: 'customization/site-config' },
+            { label: '主题风格', translations: { en: 'Themes' }, slug: 'customization/themes' },
+            { label: 'Markdown 支持', translations: { en: 'Markdown Support' }, slug: 'usage/markdown' },
+            { label: '图片上传机制', translations: { en: 'Image Upload Mechanism' }, slug: 'usage/images' },
           ],
         },
         {
           label: '进阶与优化',
+          translations: { en: 'Advanced & Optimization' },
           items: [
-            { label: 'API 加速', slug: 'advanced/api-proxy' },
-            { label: '自定义域名', slug: 'advanced/custom-domain' },
-            { label: '获取更新', slug: 'advanced/upstream-sync' },
+            { label: 'API 加速', translations: { en: 'API Acceleration' }, slug: 'advanced/api-proxy' },
+            { label: '自定义域名', translations: { en: 'Custom Domain' }, slug: 'advanced/custom-domain' },
+            { label: '获取更新', translations: { en: 'Get Updates' }, slug: 'advanced/upstream-sync' },
           ],
         },
         {
           label: '帮助',
+          translations: { en: 'Help' },
           items: [
-            { label: '故障排除', slug: 'troubleshooting' },
-            { label: '版本日志', slug: 'changelog' },
+            { label: '故障排除', translations: { en: 'Troubleshooting' }, slug: 'troubleshooting' },
+            { label: '版本日志', translations: { en: 'Changelog' }, slug: 'changelog' },
           ],
         },
       ],

@@ -1,0 +1,84 @@
+---
+title: Verification
+description: Confirm website deployment success
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+After completing the previous steps, let's verify if the website has been deployed successfully.
+
+## Manually Trigger a Build
+
+<Steps>
+
+1. Go to your Forked repository
+
+2. Click the **Actions** tab at the top
+
+3. Find the **Deploy to GitHub Pages** workflow on the left
+
+4. Click the **Run workflow** button on the right
+
+5. Select the `main` branch and click the green **Run workflow** button
+
+</Steps>
+
+![](../../getting-started/run-workflow.png)
+
+## View Build Status
+
+The build process usually takes 1-3 minutes. You can click on the running workflow to view details. Here is what the statuses mean:
+
+| Status | Icon | Meaning |
+|------|------|------|
+| In progress | 🟡 | Building |
+| Success | ✅ | Build Successful |
+| Failure | ❌ | Build Failed |
+
+:::tip[Succesful Build Indicator]
+When you see a green ✅ for all steps, the build was successful!
+:::
+
+## Access Your Website
+
+After a successful build, you can access your website at the following address:
+
+```
+https://<YOUR_USERNAME>.github.io/<REPO_NAME>/
+```
+
+For example, if your GitHub username is `aeris` and the repo name is `moire`:
+
+```
+https://aeris.github.io/moire/
+```
+
+:::note[First Access]
+It may take a few minutes for the deployment to take effect after the first run. If you see a 404 error, wait a moment and try again.
+:::
+
+## Common Issues
+
+### Build Failed?
+
+If Actions shows a red ❌:
+
+- Click the failed workflow to view the detailed logs
+- Check if GitHub Actions permissions are correctly enabled
+- Check if the "Build and deployment" Source is set to "GitHub Actions"
+
+For more help, please see the [Troubleshooting](/en/troubleshooting/) chapter.
+
+## Congratulations! 🎉
+
+If you can successfully access your website, the deployment is complete!
+
+Next, we need to configure the iOS Shortcut so you can sync notes from Apple Notes.
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Download Shortcuts"
+  description="Install and configure the Moire Sync Shortcut"
+  href="/en/shortcuts/downloads/"
+/>

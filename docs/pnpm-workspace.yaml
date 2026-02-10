@@ -1,0 +1,2 @@
+patchedDependencies:
+  starlight-theme-black: patches/starlight-theme-black.patch

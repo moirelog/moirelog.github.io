@@ -1,0 +1,89 @@
+---
+title: Fill in Configuration
+description: Edit Moire Config and fill in your GitHub information
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+After downloading the Shortcuts, you need to edit **Moire Config** to fill in your GitHub information.
+
+## Edit Moire Config
+
+<Steps>
+
+1. Open the Shortcuts app.
+
+2. Find and right-click **Moire Config** and select "Edit".
+
+3. There are several configurations in the workflow; find the variables below and enter your information.
+
+</Steps>
+
+## Fill in Information
+
+
+### 1. token
+
+Paste the Token generated during the [Website Deployment](/en/getting-started/installation/#step-4-generate-a-token) step.
+
+**Format example**:
+```
+github_pat_xxxxxxxxxxxxxxxxxxxxxx_xxxxxxxxxxxxxxx
+```
+
+### 2. owner (Username)
+
+Enter your GitHub username (**not** your email).
+
+**Example**:
+```
+aeris
+```
+
+
+### 3. repo (Repository Name)
+
+Generally no need to change this, but if you renamed the repository when Forking it, enter the new name.
+
+**Example**:
+```
+moire
+```
+
+---
+
+:::danger[Token Security]
+- The Token is stored securely on your device.
+- It is not uploaded to any third-party servers.
+- Please keep it safe and do not share it with others.
+:::
+
+## Configuration Example
+
+Complete configuration example:
+
+| Field | Value |
+|------|------|
+| User | `aeris` |
+| Repo | `moire` |
+| Token | `github_pat_abc123...` |
+
+Once filled, these configurations will be saved within the Shortcut's dictionary.
+
+## FAQ
+
+### Do I need to configure this on every device?
+
+No. Shortcut configurations **will** sync across devices. If you use Moire on multiple devices (iPhone + iPad), you do not need to repeat the configuration.
+
+## Next Steps
+
+Once configured, we need to create a dedicated folder in Apple Notes.
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Create Sync Folder"
+  description="Create the Moire folder in Apple Notes"
+  href="/en/shortcuts/sync-folder/"
+/>

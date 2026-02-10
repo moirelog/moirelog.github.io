@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  starlight-theme-black:
+    hash: a93b8dcc480b98e19542ea973ad905d5c24b0aa6a6b174da99663baeebfdccaa
+    path: patches/starlight-theme-black.patch
+
 importers:
 
   .:
@@ -31,7 +36,7 @@ importers:
         version: 0.34.5
       starlight-theme-black:
         specifier: ^0.6.0
-        version: 0.6.0(@astrojs/starlight@0.37.6(astro@5.17.1(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)))
+        version: 0.6.0(patch_hash=a93b8dcc480b98e19542ea973ad905d5c24b0aa6a6b174da99663baeebfdccaa)(@astrojs/starlight@0.37.6(astro@5.17.1(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)))
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
@@ -4243,7 +4248,7 @@ snapshots:
 
   space-separated-tokens@2.0.2: {}
 
-  starlight-theme-black@0.6.0(@astrojs/starlight@0.37.6(astro@5.17.1(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3))):
+  starlight-theme-black@0.6.0(patch_hash=a93b8dcc480b98e19542ea973ad905d5c24b0aa6a6b174da99663baeebfdccaa)(@astrojs/starlight@0.37.6(astro@5.17.1(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3))):
     dependencies:
       '@astrojs/starlight': 0.37.6(astro@5.17.1(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3))
       '@fontsource/geist-mono': 5.2.7

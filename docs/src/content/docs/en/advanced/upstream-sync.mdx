@@ -1,0 +1,60 @@
+---
+title: Get Updates
+description: How to sync new features and fixes from Moire
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Since Moire is deployed by **Forking**, you will need to manually sync with the upstream code whenever you want new features or bug fixes for the website. Updates related to Shortcuts can be ignored.
+
+## Method 1: Using the GitHub Web Interface (Recommended)
+
+This is the simplest method and does not require using the command line.
+
+<Steps>
+
+1. Open your GitHub repository page (e.g., `yourname/moirelog.github.io`).
+
+2. Find the **Sync fork** button above the file list.
+
+3. Click **Update branch**.
+
+</Steps>
+
+<Aside type="tip">
+If the button shows "This branch is up to date," it means your code is already up to date.
+</Aside>
+
+## Method 2: Using the Command Line
+
+If you are comfortable with Git, you can also perform the merge locally.
+
+<Steps>
+
+1. Add the upstream repository:
+   ```bash
+   git remote add upstream https://github.com/moirelog/moire.git
+   ```
+
+2. Fetch updates:
+   ```bash
+   git fetch upstream
+   ```
+
+3. Merge into your local main branch:
+   ```bash
+   git checkout main
+   git merge upstream/main
+   ```
+
+4. Push to your repository:
+   ```bash
+   git push origin main
+   ```
+
+</Steps>
+
+## Considerations
+
+- **Configuration File**: Updates usually do not modify your `moire.config.ts`, but handle with care if you encounter conflicts.
+- **Custom Modifications**: If you have modified core system code (such as page layouts), merging may result in conflicts that require manual resolution.

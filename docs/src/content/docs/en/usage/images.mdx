@@ -1,0 +1,107 @@
+---
+title: Image Upload Mechanism
+description: Learn how Moire handles image uploads and its limitations
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Moire supports inserting images into notes, but there are some important limitations to ensure stability.
+
+## Key Limitations
+
+:::danger[Supports only 1 image per sync]
+Whenever the Moire Sync Shortcut runs, it will only upload the **first** image found in the note.
+
+This is to ensure the speed and stability of the Shortcut.
+:::
+
+## How It Works
+
+When you insert an image in Apple Notes and sync:
+
+<Steps>
+1. Shortcut extracts the first image from the note
+2. Converts the image to Base64 encoding
+3. Uploads it to the `/src/memos/images/` directory in the GitHub repository
+4. Automatically inserts the image link into the Markdown file
+</Steps>
+
+## Recommendations
+
+### ✅ Do:
+- **Keep it to 1 image per note**
+- Use the image as a cover or key visual
+- Keep image size under 1MB
+
+### ❌ Don't:
+- Insert multiple images (only the first will upload)
+- Upload oversized images (may cause sync failure)
+- Rely on images for critical information (may load slowly)
+
+## Image Formats
+
+Supported formats:
+- ✅ PNG
+- ✅ JPG / JPEG
+- ✅ GIF
+- ✅ WebP
+
+## Image Naming
+
+Uploaded images are automatically named as:
+
+```
+[file-hash].png
+```
+
+
+## Troubleshooting
+
+### Image not uploading?
+
+Possible causes:
+
+| Issue | Solution |
+|------|----------|
+| Image too large | Compress the image or use a smaller format |
+| Network timeout | Check your connection and retry the sync |
+| Insufficient Token permissions | Ensure Token has Contents: Read/Write permissions |
+| Unsupported format| Use PNG or JPG |
+
+### Image displaying incorrectly?
+
+Check:
+- If GitHub Actions built successfully
+- If the image was correctly uploaded to `/src/memos/images/`
+- If the image path in Markdown is correct
+
+## Need Multiple Images?
+
+If you need more than one image in a post, here are alternative solutions:
+
+### Option 1: Create a Collage
+
+Combine multiple images into one before uploading.
+
+**Pro**: Only counts as 1 upload  
+**Con**: Requires extra tools for processing
+
+### Option 2: Manual Upload
+
+1. Manually upload images to the repository's `/src/memos/images/` directory
+2. Use relative paths to reference them in your note
+
+**Pro**: Full control  
+**Con**: Loses the convenience of the Shortcut
+
+
+## Next Steps
+
+If you are in mainland China, you may need to configure API acceleration.
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="API Acceleration"
+  description="Configure a Cloudflare Workers proxy for users in mainland China"
+  href="/en/advanced/api-proxy/"
+/>

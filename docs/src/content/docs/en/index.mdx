@@ -1,0 +1,74 @@
+---
+title: Moire
+description: Sync Apple Notes to an online blog to preserve and share your thoughts
+template: splash
+hero:
+  tagline: Sync Apple Notes to an online blog to preserve and share your thoughts
+
+  actions:
+    - text: Get Started
+      link: /en/introduction/
+      variant: primary
+    - text: GitHub
+      link: https://github.com/moirelog/moire
+      variant: secondary
+    - text: Explore Themes
+      link: https://themes.moire.blog
+      variant: secondary
+  image:
+    file: ../../../assets/moire.svg
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import { ContainerSection } from 'starlight-theme-black/components'
+
+<div class="z-0 relative">
+<ContainerSection>
+
+## Why Choose Moire?
+
+<CardGrid stagger>
+
+	<Card title="Native Experience" icon="apple">
+		Write directly in Apple Notes without installing any third-party apps. Use your familiar writing environment without changing your habits.
+	</Card>
+	<Card title="Data Ownership" icon="approve-check">
+		All data is stored in your own GitHub repository. Completely private, permanently preserved, and exportable at any time. Your data, your control.
+	</Card>
+	<Card title="Beautiful Themes" icon="seti:css">
+		Features multiple meticulously designed themes: Receipt, Cyberpunk, Academic, Pixel Game, and more to suit your style.
+	</Card>
+	<Card title="One-Click Sync" icon="rocket">
+		Automatically syncs to your website after you close the note. Powered by iOS Shortcuts and GitHub Actions with zero server costs.
+	</Card>
+</CardGrid>
+
+## How It Works
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Apple Notes   │───▶│  iOS Shortcut   │───▶│   GitHub Repo   │
+│   Writing       │    │  Moire Sync     │    │   Storage       │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                                                      │
+                                                      ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Your Website  │◀───│ GitHub Actions  │◀───│  Auto Trigger   │
+│   Publishing    │    │  Build/Deploy   │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+## Quick Start
+
+Ready? Get your blog running in three simple steps:
+
+1. **Fork the Repo** - Copy Moire to your GitHub
+2. **Configure Token** - Generate and set up your access token
+3. **Install Shortcut** - Download and configure the iOS Shortcut
+
+<Card title="Start Now" icon="document">
+  Check out the [Installation & Deployment Guide](/en/getting-started/prerequisites/) for detailed steps.
+</Card>
+
+</ContainerSection>
+</div>

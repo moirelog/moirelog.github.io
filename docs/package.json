@@ -20,5 +20,10 @@
     "sharp": "^0.34.2",
     "starlight-theme-black": "^0.6.0",
     "tailwindcss": "^4.1.18"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "starlight-theme-black": "patches/starlight-theme-black.patch"
+    }
   }
 }

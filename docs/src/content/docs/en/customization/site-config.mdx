@@ -1,0 +1,143 @@
+---
+title: Site Configuration
+description: Edit basic site information such as title, author, and description
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+By modifying the `moire.config.ts` file, you can customize your website's basic information.
+
+## Configuration File Location
+
+```
+your-repo/
+└── moire.config.ts  ← Here
+```
+
+## Configuration Parameters Detail
+
+Open `moire.config.ts`, and you will see a configuration similar to this:
+
+```typescript
+export default {
+  // Website Title
+  title: "My Moire Blog",
+  
+  // Author Name
+  author: "Aeris",
+  
+  // Website Description
+  description: "My personal blog powered by Moire",
+  
+  // Number of posts displayed per page
+  pageSize: 10,
+  
+  // Theme selection
+  theme: "receipt",
+  
+  // Your time zone
+  utcOffset: 8
+  
+}
+```
+
+## Parameter Descriptions
+
+### title
+
+**Type**: `string`  
+**Default**: `"Moire Blog"`
+
+The title of your website, which appears in:
+- Browser tabs
+- Top navigation bar
+- SEO meta tags
+
+### author
+
+**Type**: `string`  
+**Default**: `"Anonymous"`
+
+The author's name, used for:
+- Article signatures
+- RSS feeds
+- SEO meta tags
+
+### description
+
+**Type**: `string`  
+**Default**: `"A blog powered by Moire"`
+
+The website description, primarily for SEO, appearing in:
+- Search engine results
+- Social media cards
+- RSS feed descriptions
+
+### pageSize
+
+**Type**: `number`  
+**Default**: `10`
+
+The number of posts displayed per page on the home page.
+
+- Recommended: 5-20
+- Too few requires frequent page turning
+- Too many can slow down loading
+
+### theme
+
+**Type**: `string`  
+**Options**: `"receipt"` | `"cyberpunk"` | `"academic"` | `"pixel"`
+
+The theme style. See the [Themes](/en/customization/themes/) chapter for details.
+
+### utcOffset
+
+**Type**: `number`  
+**Default**: `8`
+
+Your UTC time zone offset, used to calculate post publication times.
+
+## Example Configuration
+
+A complete configuration example:
+
+```typescript
+export default {
+  title: "Moire's Notebook",
+  author: "Aeris",
+  description: "Notes on technology, life, and thoughts",
+  pageSize: 8,
+  theme: "academic",
+  avatar: "https://avatars.githubusercontent.com/u/123456",
+  utcOffset: 8
+}
+```
+
+## Applying Changes
+
+After modifying the configuration:
+
+<Steps>
+
+1. **Commit to GitHub** (via Git or GitHub [web editor](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files))
+2. GitHub Actions will build automatically
+3. Wait 1-2 minutes and refresh your website to see the changes
+
+</Steps>
+
+:::tip[Local Preview]
+If you have cloned the repository locally, you can run `npm run dev` for an instant preview of your changes.
+:::
+
+## Next Steps
+
+Once you've configured your site, let's look at how to switch themes.
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard
+  title="Themes"
+  description="Choose and switch to the theme you like"
+  href="/en/customization/themes/"
+/>
