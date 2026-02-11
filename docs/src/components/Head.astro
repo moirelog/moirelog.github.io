@@ -8,6 +8,20 @@ const props = Astro.props;
 <StarlightHead {...props} />
 <ClientRouter />
 
+<script is:inline>
+  (function() {
+    // Only redirect on root (zh) pages, not already on /en/
+    if (window.location.pathname.startsWith('/en')) return;
+    // Only redirect once per session
+    if (sessionStorage.getItem('lang-redirected')) return;
+    var lang = navigator.language || navigator.userLanguage || '';
+    if (!lang.startsWith('zh')) {
+      sessionStorage.setItem('lang-redirected', '1');
+      window.location.replace('/en' + window.location.pathname);
+    }
+  })();
+</script>
+
 <script>
   import mediumZoom from 'medium-zoom';
  
