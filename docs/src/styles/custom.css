@@ -106,3 +106,25 @@ img {
 .links-nav a:first-child {
   display: none;
 }
+
+.nav-bar a[data-video] {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  margin-left: -1rem;
+}
+
+.nav-bar a[data-video]::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: url('/video.svg') no-repeat center / contain;
+  mask: url('/video.svg') no-repeat center / contain;
+}
+
+.actions a[href^="https://www.bilibili.com/video/"] {
+  @apply text-xl p-2 border-3 border-black;
+}

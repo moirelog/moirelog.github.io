@@ -41,11 +41,16 @@ export default defineConfig({
             label: { root: '使用指南', 'zh-CN': '使用指南', en: 'User Guide' },
             link: '/introduction',
           },
+            {
+              label: { root: '▶', 'zh-CN': '▶', en: '▶' },
+              link: 'https://www.bilibili.com/video/BV1J3FozGEjt/',
+              attrs: { 'data-video': '', target: '_blank' },
+          },
           {
             label: { root: '预览', 'zh-CN': '预览', en: 'Preview' },
             link: 'https://moire.blog/',
             badge: 'demo',
-          }],
+            }],
           footerText:
             'Moire is a project syncing Apple Notes to GitHub Pages, designed by [Yanxin](https://github.com/anig1scur).'
         })
