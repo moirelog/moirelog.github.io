@@ -83,6 +83,20 @@ Preview:
 |------|------|
 | Content 1 | Content 2 |
 
+## Known Issues
+
+### Style Loss
+
+Bold, italic, and other styles may be lost if there are leading or trailing spaces in titles or body text.
+
+### Sync Inconsistencies
+
+iOS and macOS export styles differently. iOS loses styles in titles and generates more empty line breaks (though usually not visible on the page).
+
+### macOS Title Behavior
+
+On macOS, the first line of a note is always treated as a Bold Level 2 Heading by the Shortcuts API, regardless of its original formatting.
+
 ## Best Practices
 
 ### 1. Keep It Simple
