@@ -108,6 +108,15 @@ If you deleted the note from Apple Notes before adding the `[DEL]` tag, you can:
 
 </Steps>
 
+## Sync Only (Private Backup)
+
+If you only want to use Moire to sync and back up your notes without making them public as a blog, follow these steps:
+
+1. **Disable GitHub Pages**: In your GitHub repository's Settings > Pages, set the "Source" under Build and deployment to "None", or remove the deployment workflow.
+2. **Set Repository to Private**: In Settings > General > Danger Zone, change the repository's visibility to **Private**.
+
+Since the GitHub Access Token you configured in the Shortcut has permission to access private repositories, the sync functionality will still work perfectly, but your notes will only be visible to you.
+
 ## Next Steps
 
 Now that the folder is set up, finally we need to configure automation so your notes sync automatically when you close the app.
