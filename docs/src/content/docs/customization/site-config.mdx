@@ -34,11 +34,7 @@ export default {
   pageSize: 10,
   
   // 主题选择
-  theme: "receipt",
-  
-  // 你所在的时区
-  utcOffset: 8
-  
+  theme: "receipt"
 }
 ```
 
@@ -88,16 +84,9 @@ export default {
 ### theme
 
 **类型**：`string`  
-**可选值**：`"receipt"` | `"cyberpunk"` | `"academic"` | `"pixel"`
+**可选值**：`"classic"` | `"receipt"` | `"cyberpunk"` | `"academic"` | `"pixel"` | `"bento"`
 
 主题风格，详见[主题风格](/customization/themes/)章节。
-
-### utcOffset
-
-**类型**：`number`  
-**默认值**：`8`
-
-你所在的 UTC 时区，用于计算文章的发布时间。
 
 ## 示例配置
 
@@ -109,9 +98,7 @@ export default {
   author: "Aeris",
   description: "记录技术、生活与思考",
   pageSize: 8,
-  theme: "academic",
-  avatar: "https://avatars.githubusercontent.com/u/123456",
-  utcOffset: 8
+  theme: "academic"
 }
 ```
 

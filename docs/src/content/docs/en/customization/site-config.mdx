@@ -33,11 +33,7 @@ export default {
   pageSize: 10,
   
   // Theme selection
-  theme: "receipt",
-  
-  // Your time zone
-  utcOffset: 8
-  
+  theme: "receipt"
 }
 ```
 
@@ -87,16 +83,10 @@ The number of posts displayed per page on the home page.
 ### theme
 
 **Type**: `string`  
-**Options**: `"receipt"` | `"cyberpunk"` | `"academic"` | `"pixel"`
+**Options**: `"classic"` | `"receipt"` | `"cyberpunk"` | `"academic"` | `"pixel"` | `"bento"`
 
 The theme style. See the [Themes](/en/customization/themes/) chapter for details.
 
-### utcOffset
-
-**Type**: `number`  
-**Default**: `8`
-
-Your UTC time zone offset, used to calculate post publication times.
 
 ## Example Configuration
 
@@ -108,9 +98,7 @@ export default {
   author: "Aeris",
   description: "Notes on technology, life, and thoughts",
   pageSize: 8,
-  theme: "academic",
-  avatar: "https://avatars.githubusercontent.com/u/123456",
-  utcOffset: 8
+  theme: "academic"
 }
 ```
 

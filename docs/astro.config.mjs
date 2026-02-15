@@ -93,7 +93,7 @@ export default defineConfig({
           items: [
             { label: '下载快捷指令', translations: { en: 'Download Shortcuts' }, slug: 'shortcuts/downloads' },
             { label: '填写配置', translations: { en: 'Fill in Configuration' }, slug: 'shortcuts/configuration' },
-            { label: '建立同步文件夹', translations: { en: 'Create Sync Folder' }, slug: 'shortcuts/sync-folder' },
+            { label: '同步、删除与备份', translations: { en: 'Sync, Delete & Backup' }, slug: 'shortcuts/sync-folder' },
             { label: '自动化', translations: { en: 'Automation' }, slug: 'shortcuts/automation' },
           ],
         },

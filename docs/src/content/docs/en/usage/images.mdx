@@ -6,20 +6,6 @@ import { Steps } from '@astrojs/starlight/components';
 
 Moire supports inserting images into notes, but there are some important limitations to ensure stability.
 
-## Key Limitations
-
-:::danger[Supports only 1 image per sync]
-Whenever the Moire Sync Shortcut runs, it will only upload the **first** image found in the note.
-
-This is to ensure the speed and stability of the Shortcut.
-:::
-
-:::caution[Image Deletion Note]
-Currently, Moire does not handle the deletion of images automatically.
-
-To prevent the GitHub repository from growing excessively, please be cautious when replacing or deleting images in your posts. If you remove an image link from your note, the previously uploaded image file in `/src/memos/images/` will still remain in the repository.
-:::
-
 
 ## How It Works
 
@@ -31,6 +17,19 @@ When you insert an image in Apple Notes and sync:
 3. Uploads it to the `/src/memos/images/` directory in the GitHub repository
 4. Automatically inserts the image link into the Markdown file
 </Steps>
+
+## Important Limitations
+
+### 1. Supports only 1 image per sync
+Whenever the Moire Sync Shortcut runs, it will only upload the **first** image found in the note.
+
+This is to ensure the speed and stability of the Shortcut.
+
+### 2. No automatic image deletion
+Currently, Moire does not handle the deletion of images automatically.
+
+To prevent the GitHub repository from growing excessively, please be cautious when replacing or deleting images in your posts. If you remove an image link from your note, the previously uploaded image file in `/src/memos/images/` will still remain in the repository.
+
 
 ## Recommendations
 
