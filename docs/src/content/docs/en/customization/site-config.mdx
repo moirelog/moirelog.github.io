@@ -33,7 +33,13 @@ export default {
   pageSize: 10,
   
   // Theme selection
-  theme: "receipt"
+  theme: "receipt",
+
+  // Sort order
+  order_by: "created",
+
+  // Website URL
+  url: "https://moirelog.blog",
 }
 ```
 
@@ -80,6 +86,16 @@ The number of posts displayed per page on the home page.
 - Too few requires frequent page turning
 - Too many can slow down loading
 
+### order_by
+
+**Type**: `string`
+**Options**: `"created"` | `"modified"`
+**Default**: `"created"`
+
+Sort order for posts:
+- `created`: Sort by creation date (default)
+- `modified`: Sort by modification date (suitable for users who frequently update notes)
+
 ### theme
 
 **Type**: `string`  
@@ -98,7 +114,8 @@ export default {
   author: "Aeris",
   description: "Notes on technology, life, and thoughts",
   pageSize: 8,
-  theme: "academic"
+  theme: "academic",
+  order_by: "modified"
 }
 ```
 

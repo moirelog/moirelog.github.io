@@ -34,7 +34,13 @@ export default {
   pageSize: 10,
   
   // 主题选择
-  theme: "receipt"
+  theme: "receipt",
+
+  // 排序方式
+  order_by: "created",
+
+  // 网站 URL，用于 RSS feed / meta 标签
+  url: "https://moirelog.blog",
 }
 ```
 
@@ -81,6 +87,16 @@ export default {
 - 太少需要频繁翻页
 - 太多加载慢
 
+### order_by
+
+**类型**：`string`
+**可选值**：`"created"` | `"modified"`
+**默认值**：`"created"`
+
+文章排序方式：
+- `created`: 按创建时间排序（默认）
+- `modified`: 按修改时间排序（适合经常更新笔记的用户）
+
 ### theme
 
 **类型**：`string`  
@@ -98,7 +114,8 @@ export default {
   author: "Aeris",
   description: "记录技术、生活与思考",
   pageSize: 8,
-  theme: "academic"
+  theme: "academic",
+  order_by: "modified"
 }
 ```
 
