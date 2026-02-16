@@ -2,7 +2,7 @@
   "suite_name": "Moire",
   "current_version": "1.0.1",
   "release_date": "2026-02-15",
-  "update_notes": "1. 使用 utc 时间 2. 支持 todo list",
+  "update_notes": "1. 使用 utc 时间 2. 支持 todo list 3. 支持 monospace -> code",
   "installer_config": {
     "min_ios_version": "16.0",
     "config_path": "Shortcuts/Moire/config.json"
@@ -21,7 +21,7 @@
     {
       "id": "clean_note",
       "name": "Moire: Clean Note to Markdown",
-      "url": "https://www.icloud.com/shortcuts/fecb475e3b4a4b8cadc09f3aa6818fd5"
+      "url": "https://www.icloud.com/shortcuts/3644f6688cb549adabef621dce499316"
     },
     {
       "id": "sync",
