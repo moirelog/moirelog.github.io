@@ -15,7 +15,8 @@ const props = Astro.props;
     // Only redirect once per session
     if (sessionStorage.getItem('lang-redirected')) return;
     var lang = navigator.language || navigator.userLanguage || '';
-    if (!lang.startsWith('zh')) {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (!lang.startsWith('zh') && tz !== 'Asia/Shanghai' && tz !== 'Asia/Beijing') {
       sessionStorage.setItem('lang-redirected', '1');
       window.location.replace('/en' + window.location.pathname);
     }
