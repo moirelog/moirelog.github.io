@@ -128,3 +128,13 @@ img {
 .actions a[href^="https://www.bilibili.com/video/"] {
   @apply text-xl p-2 border-3 border-black;
 }
+
+.sl-markdown-content li li p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sl-markdown-content li > ul,
+.sl-markdown-content li > ol {
+  margin-top: 0;
+}
